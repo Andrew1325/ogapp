@@ -1,0 +1,23 @@
+query cartVariants($query: String!) {
+  cartVariants (
+    query: $query
+  ) {
+    id
+    name
+    price_adjust
+    stock
+    image
+    product {
+      id
+      price
+    }
+    variant_descriptors {
+      id
+      name
+      descriptor
+      variant {
+        name
+      }
+    }
+  }
+}

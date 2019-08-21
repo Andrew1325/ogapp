@@ -1,0 +1,5 @@
+mutation createVisit($ip:String!){
+  createVisit(ip: $ip) {
+    ip
+  }
+}

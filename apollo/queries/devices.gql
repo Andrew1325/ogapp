@@ -1,0 +1,8 @@
+query {
+  devices {
+    id
+    mobile
+    tablet
+    desktop
+  }
+}

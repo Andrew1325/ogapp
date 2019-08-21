@@ -1,0 +1,6 @@
+query {
+	postcats {
+    id
+    name
+  }
+}

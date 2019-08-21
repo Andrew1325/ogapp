@@ -1,0 +1,7 @@
+query visits($query:String!){
+  visits (query: $query) {
+    id
+    ip
+    created_at
+  }
+}

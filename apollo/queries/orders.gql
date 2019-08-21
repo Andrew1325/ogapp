@@ -1,0 +1,9 @@
+query orders ($date: String){
+  orders (date: $date) {
+    id
+    created_at
+    order_detail {
+      total
+    }
+  }
+}

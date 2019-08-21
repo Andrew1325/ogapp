@@ -1,0 +1,15 @@
+query events($first: Int) {
+  events (first: $first) {
+    id
+    title
+    subtitle
+    body
+    image
+    start_date
+    end_date
+    free
+    cost
+    bookings_close
+    bookings_open
+  }
+}

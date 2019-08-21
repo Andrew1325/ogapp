@@ -1,0 +1,29 @@
+query product ($id: ID!) {
+	product (id:$id)  {
+    id
+    name
+    description
+    image
+    price
+    price_adjust
+    product_variants {
+      id
+      name
+      price_adjust
+      stock
+      image
+      product {
+        id
+        price
+      }
+      variant_descriptors {
+        id
+        name
+        descriptor
+        variant {
+          name
+        }
+      }
+    }
+  }
+}

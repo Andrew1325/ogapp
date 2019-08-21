@@ -1,0 +1,11 @@
+query registrations ($event: ID) {
+  registrations (event: $event) {
+    id
+    user {
+      name
+      email
+    }
+    created_at
+    donation
+  }
+}

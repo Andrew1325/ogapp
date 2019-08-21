@@ -1,0 +1,8 @@
+mutation updateDevice($id:ID!, $mobile:Int!, $tablet:Int!, $desktop:Int!){
+    updateDevice(id: $id, data:{mobile: $mobile, tablet: $tablet, desktop: $desktop}) {
+        id
+        mobile
+        tablet
+        desktop
+    }
+}

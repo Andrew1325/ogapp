@@ -1,0 +1,13 @@
+query products($after: String, $before: String, $skip: Int) {
+  products(skip: $skip, after: $after, before: $before) {
+    count
+    products {
+      id
+      name
+      description
+      image
+      price
+      price_adjust
+    }
+  }
+}
