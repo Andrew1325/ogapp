@@ -92,7 +92,7 @@ export const actions = {
   },
 
   async getIP ({ commit }) {
-    let ip = await this.$axios.$get('http://icanhazip.com')
+    let ip = await this.$axios.$get('https://icanhazip.com')
     ip = ip.trim()
     const client = this.app.apolloProvider.defaultClient
     await client.mutate({
