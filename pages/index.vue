@@ -12,7 +12,7 @@
         </div>
         <div class="teaser" v-else>
           <h1><span id="seed">Seeding</span> <span id="change">Change</span></h1>
-          <p class="what">What changes would you like to seed in yourself? Your life? Your community?</p>
+          <p class="what" style="font-weight: 400;">What changes would you like to seed in yourself? Your life? Your community?</p>
           <v-btn nuxt to="/theme" class="whatbtn" outline color="white">Read More</v-btn>
         </div>
       </v-card>
@@ -129,15 +129,15 @@
     </v-flex>
     <v-flex xs12>
       <v-card flat class="carousel">
-        <v-carousel hide-controls hide-delimiters>
+        <v-carousel interval="7500" hide-controls hide-delimiters>
           <v-carousel-item
-            v-for="i in 4"
+            v-for="(q, i) in quotes"
             :key="i"
             src=""
           >
             <div>
               <span>
-                <h1 style="font-size:1.2rem;">"Wonderful quote from someone no. {{ i }} Wonderful quote from someone no. {{ i }} Wonderful quote from someone no. {{ i }}"</h1>
+                <h1 style="font-size:1.2rem;">"{{q}}"</h1>
               </span>
             </div>
           </v-carousel-item>
@@ -174,7 +174,13 @@ import { mapGetters } from 'vuex';
 export default {
   data: () => ({
     merge: false,
-    greet: false
+    greet: false,
+    quotes: [
+      "You women are wonderful. Thank you so much for all you give. I think it is beautiful what you are creating and offering to women. It feels so inclusive of everyone who comes and accessible and comfortable.",
+      "Was awesome – thank you. Being financially stretched usually means I can’t attend events like this. So glad it was by donation. Next time hopefully I'll be able to donate more! Blessings and light to the goddesses.",
+      "The atmosphere and connecting with other women in love and friendship that wish to improve themselves and the world.",
+      "The relaxed energy and time, location. Loved drumming, my first time. Food was great. Friendship & sisterhood was fantastic."
+    ]
   }),
   components: {
     MainFooter
@@ -299,6 +305,11 @@ export default {
   @media (max-height:660px) {
     .three > .teaser {
       top:10vh;
+    }
+    .box-logo {
+      width: 18vw;
+      min-height: 26vh;
+      left: 41vw;
     }
   }
   .para-div {
@@ -499,6 +510,11 @@ export default {
     color: white;
   }
   @media (max-width: 660px){
+    .box-logo {
+      width: 28vw;
+      min-height: 22vh;
+      left: 36vw;
+    }
     .teaser p, .five-text-holder p, .tri-sm-4 p{
       font-weight: 400;
       font-size: 1.1rem;
@@ -527,6 +543,10 @@ export default {
     }
   }
   @media (min-width: 660px) and (max-width: 1023px){
+    .box-logo {
+      width: 14%;
+      left: 43%;
+    }
     .teaser p{
       font-weight: 100;
       font-size: 1.1rem;

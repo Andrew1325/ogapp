@@ -66,7 +66,7 @@
       </template>
       <template v-if="delReg">
         <p v-if="selected.length > 0">
-          The following names have been selected to have theire registrations for {{event.title}} deleted:
+          The following names have been selected to have their registrations for {{event.title}} deleted:
           <br><br>
           <ul v-for="name in regNames" :key="name">
             <li>{{name}}</li>

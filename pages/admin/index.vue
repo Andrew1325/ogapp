@@ -33,7 +33,7 @@
       <v-layout row wrap>
         <v-flex xs12 md9>
           <div class="second-row" style="margin-right:16px;">
-            <template v-if="regsDetail && regsDetail.length > 1">
+            <template v-if="regsDetail && regsDetail.length > 0">
               <h2>Recent event registrations</h2>
               <table>
                 <thead>
@@ -42,21 +42,22 @@
                     <td>Name</td>
                     <td>Date Registered</td>
                   </tr>
-                  <tbody>
-                    <tr v-for="reg in regsDetail" :key="reg.id">
-                      <td>{{reg.event.name}}</td>
-                      <td>{{reg.user.name}}</td>
-                      <td>{{reg.created_at}}</td>
-                    </tr>
-                  </tbody>
                 </thead>
+                <tbody>
+                  <tr v-for="reg in regsDetail" :key="reg.id">
+                    <td>{{reg.event.title}}</td>
+                    <td>{{reg.user.name}}</td>
+                    <td>{{niceDate(reg.created_at)}}</td>
+                  </tr>
+                </tbody>
               </table>
             </template>
             <template v-else>
+              {{regsDetail}}
               <h2>There have been no event registrations in the past week.</h2>
             </template>
             <br><br>
-            <template v-if="regsDetail && regsDetail.length > 1">
+            <template v-if="false">
               <h2>Recent sales activity</h2>
               <table>
                 <thead>
@@ -67,7 +68,7 @@
                   </tr>
                   <tbody>
                     <tr v-for="reg in regsDetail" :key="reg.id">
-                      <td>{{reg.event.name}}</td>
+                      <td>{{reg.event.title}}</td>
                       <td>{{reg.user.name}}</td>
                       <td>{{reg.created_at}}</td>
                     </tr>
@@ -76,7 +77,7 @@
               </table>
             </template>
             <template v-else>
-              <h2>There has been no sales in the past week.</h2>
+              <h2>There have been no sales in the past week.</h2>
             </template>
           </div>
         </v-flex>
@@ -137,6 +138,17 @@ export default {
 </script>
 
 <style scoped>
+  table, tr, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+  }
+  thead {
+    font-weight: 800;
+  }
+  td {
+    padding: 4px 12px;
+    text-align: center;
+  }
   .semi-bar{
     background-color: #e6e6e67e;
     height: 60px;

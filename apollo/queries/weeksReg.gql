@@ -1,5 +1,13 @@
-query {
-  registrations {
+query weeklyRegistrations($date: String!){
+  weeklyRegistrations (date: $date) {
+    id
+    event {
+      title
+    }
+    user {
+      name
+    }
+    donation
     created_at
   }
 }

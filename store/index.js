@@ -142,13 +142,13 @@ export const actions = {
         date: weekago
       }
     })
-    const weeksRegs = JSON.parse(JSON.stringify(regs.data.registrations))
-    commit("setWeeksRegDetail", weeksReg)
+    console.log(regs.data.weeklyRegistrations)
+    commit("setWeeksRegDetail", regs.data.weeklyRegistrations)
     let regCount = []
 
     var dayStart = new Date()
     dayStart = Date.parse(dayStart)
-
+    let weeksRegs = regs.data.weeklyRegistrations
     for (let i = 0; i < 7; i++) {
       let thisDay = []
       for (let a = 0; a < weeksRegs.length; a++) {

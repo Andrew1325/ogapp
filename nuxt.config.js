@@ -35,7 +35,7 @@ export default {
   */
   css: [
     '~/assets/style/app.styl',
-    '@/assets/main.css',
+    '~/assets/main.css',
     '~/assets/stylus/main.styl',
 
   ],
@@ -100,6 +100,12 @@ export default {
 
   router: {
     middleware: ['auth']
+  },
+
+  transition:
+  {
+    name: 'fade',
+    mode: 'out-in'
   },
 
   /*

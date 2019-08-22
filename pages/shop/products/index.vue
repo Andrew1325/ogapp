@@ -190,7 +190,6 @@ import ProductView from '@/components/ProductView.vue'
 import product from '../../../apollo/queries/product.gql'
 
 export default {
-  layout: 'shop',
   apollo: {
     categories: {
       query: categories

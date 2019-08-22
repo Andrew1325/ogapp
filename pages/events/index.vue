@@ -23,7 +23,7 @@
             <br><br>
             <h2>Our Latest Event</h2>
             <v-card class="three-cont" v-if="!!nextEvent && nextEvent.image">
-              <v-card-title><v-img :src="nextEvent.image"><span class="main-event-title" style="font-size: 5.4rem" v-html="(nextEvent.title.split(' ')).join('<br>')"></span></v-img></v-card-title>
+              <v-img :src="nextEvent.image"><div class="main-event-title-holder"><span class="main-event-title">{{nextEvent.title}}</span></div></v-img>
               <v-content>
                 <v-divider></v-divider><br>
                 <p v-if="nextEvent.end_date === null">{{niceDate(nextEvent.start_date)}}</p>
@@ -67,12 +67,12 @@
                       <h3 class="other" v-html="`<p>${(event.title.split(' ')).join('<br>')}</p>`"></h3>
                     </div>
                   </v-img>  
-                  <v-card-title style="color:#666; font-size:2.2rem; line-height:2rem;">
-                    <p>{{event.subtitle}}</p>
+                  <v-card-title style="color:#333;font-size:2.2rem; line-height:2rem;">
+                    <p style="color:#333; font-weight:400;">{{event.subtitle}}</p>
                   </v-card-title>
                     <div class="other-content">
                       <v-divider style="opacity:0.7; margin-bottom: 18px;"></v-divider>
-                       <p>{{niceDate(event.start_date)}}</p>
+                       <p style="color:#333; font-weight:400;">{{niceDate(event.start_date)}}</p>
                     </div>
                   <v-card-actions>
                     <v-btn nuxt :to="'/events/'+event.id" ><p style="padding-top: 8px; font-weight: 400;">See More</p></v-btn>
@@ -169,16 +169,18 @@ export default {
     font-weight: 400;
     font-size: 1.4rem;
   }
-  .main-event-title {
-    position:relative; 
-    top:45px;
+  .main-event-title-holder {
+    background:rgba(153, 129, 133, 0.411);
+    position:relative;
+    top:46px;
   }
-  .main-event-title >>> p {
-    line-height: 0.7rem;
+  .main-event-title {
+    text-align: center;
+    font-size: 5.8rem !important;
   }
   @media (max-width:756px){
     .main-event-title {
-      top:5px;
+      top:24px;
     }
     .teaser > p {
       font-size: 1.1rem;
@@ -230,30 +232,35 @@ export default {
     text-align: center;
     
   }
-  .v-card__title, .other {
-    font-family: 'Overlock', cursive;
-    color:white;
-    font-size: 3.6rem;
-    line-height: 4.2rem;
-    
+  .main-event-title, .other >>>p {
+    font-family: 'Playfair Display';
+    font-size: 4.7rem;
+    font-weight: 600;
+    color:rgb(231, 231, 231);
+    letter-spacing:0.4rem;
+    text-align: center;
+  }
+  @media (max-width: 660px) {
+    .main-event-title, .other >>>p {
+      font-size: 4.0rem;
+      line-height: unset;
+      top: 24px;
+    }
+    p {
+      padding: 28px;
+    }
   }
   .title-holder {
     height: 100%;
     width: 100%;
     background-color: rgba(77, 77, 77, 0.411);
   }
-  .other >>> p {
-    font-family: 'Overlock', cursive;
-    font-size: 3.4rem;
-    color:rgb(231, 231, 231);
-    letter-spacing:unset;
-    text-align: center;
-  }
+  
   .three h2, .two h2 {
-    font-family: 'Roboto';
-    font-weight: 300;
-    color: rgb(202, 202, 202);
-    font-size: 2.7rem;
+    font-family: 'Raleway';
+    font-weight: 400;
+    color: rgb(230, 230, 230);
+    font-size: 3.2rem;
   }
   .three-cont {
     margin: 12px 0;
@@ -263,11 +270,22 @@ export default {
     font-weight: 400;
   }
   .three-cont h4 {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 1.8rem;
   }
   .e-body {
     text-align: justify;
+  }
+  .e-body >>> p {
+    font-weight: 400 !important;
+    color:rgb(75, 75, 75);
+  }
+  .e-body >>> ul {
+    font-family: 'Raleway';
+    font-size: 1.4rem;
+    font-weight: 400;
+    color:rgb(75, 75, 75);
+    list-style: circle outside none;
   }
   .other-content {
     padding: 0 14px;

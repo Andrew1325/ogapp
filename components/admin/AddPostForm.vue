@@ -70,7 +70,7 @@
         <v-text-field
         v-model="postObj.title"
         :rules="titleRules"
-        :counter="26"
+        :counter="42"
         label="Title"
         required
         ></v-text-field>
@@ -85,7 +85,7 @@
         <v-text-field
         v-model="postObj.preview"
         :rules="previewRules"
-        :counter="42"
+        :counter="92"
         label="Preview Text"
         required
         ></v-text-field>
@@ -215,7 +215,7 @@ export default {
         ruleState1: true,
         titleRules: [
           v => !!v || 'Title is required',
-          v => (v && v.length <= 36) || 'Title must be less than 36 characters',
+          v => (v && v.length <= 42) || 'Title must be less than 42 characters',
         ],
 
         ruleState2: true,
@@ -318,7 +318,7 @@ export default {
         this.e6++
       },
       errorCheck1() {
-        if (this.postObj.title.length <= 0 || this.postObj.title.length > 26 ) {
+        if (this.postObj.title.length <= 0 || this.postObj.title.length > 42 ) {
           this.ruleState1 = false
         } else {
           this.ruleState1 = true

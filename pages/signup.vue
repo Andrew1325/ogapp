@@ -25,7 +25,7 @@
               <v-text-field rounded color="#f8a83644" v-model="userForm.name" :rules="nameRules"></v-text-field><br><br>
               <small>Email</small><br>
               <v-text-field rounded color="#f8a83644" v-model="userForm.email" :rules="emailRules"></v-text-field><br><br>
-              <small>Password</small><br>
+              <small>Password - Password must be 8 characters or more, contain a capital and a number</small><br>
               <v-text-field type="password" rounded slot flat style="position:relative; z-index:0;" color="#f8a83644" v-model="userForm.password" :rules="passRules"></v-text-field><br><br><br>
               <label class="check-container"><span style="position:relative;left:-10px;"><small>Keep me informed about new events and other info.</small></span>
                 <input type="checkbox">

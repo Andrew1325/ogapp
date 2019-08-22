@@ -20,18 +20,19 @@
       </v-card>
     </v-dialog>
     <v-dialog v-model="cardSafe" style="background-color:white;">
-      <div  style="background-color:white; padding:6px;">
+      <div  style="background-color:white; padding:16px; outline: 1px solid grey; outline-offset: -8px">
         <h3>Card Payment Security</h3>
-        <p>Security is one of the biggest considerations in everything we do. If you have any questions after reading this, or encounter any issues, please let us know.</p>
-        <p>We use <a href="https://stripe.com/au">Stripe</a> for out payment processing. Stripe is one of the largest and most secure payment processing companies in the world. Your credit card details are only ever seen by Stripe. Our website cannot access your details and we do not handle or store any data relating to your credit card. The payment is handled entirely by Stripe, we are simply advised that the correct amount will be charged to your card. </p>
+        <p style=" font-weight:400;">Security is one of the biggest considerations in everything we do. If you have any questions after reading this, or encounter any issues, please let us know.</p>
+        <p style=" font-weight:400;">We use <a href="https://stripe.com/au">Stripe</a> for out payment processing, one of the largest and most secure payment processing companies in the world. Your credit card details are only ever seen by Stripe. Our website cannot access your details and we do not handle or store any data relating to your credit card. The payment is handled entirely by Stripe, we are simply advised that the correct amount will be charged to your card. </p>
         <p></p>
+        <v-btn outline color="cyan" @click="cardSafe = !cardSafe">Got it</v-btn>
       </div>
     </v-dialog>
     
-    <v-flex xs12 md8>
+    <v-flex xs12 md10 xl8 offset-md1 offset-xl2>
       <v-layout row wrap style="padding: 0 20px;">
           
-          <v-flex xs12 lg6>
+          <v-flex xs12 lg6 offset-lg3>
             
             <br><br>
             <div class="details">
@@ -92,7 +93,8 @@
                   v-if="snackbar"
                   style="border-bottom: 1px solid grey; color: grey"
                   class="form-control"
-                  stripe="pk_test_k9NO5s1XlKDPDN7YkIWzoPi3"
+                  stripe="pk_live_9xydjtqH4c0UBy3DKWYboHUl"
+                  :options='stripeOptions'
                 />
                  <span v-if="snackbar" style="cursor:pointer;" @click="cardSafe = !cardSafe"><br>About<v-icon >help_outline</v-icon></span>
               </template>
@@ -130,6 +132,9 @@ export default {
   },
   data() {
     return {
+      stripeOptions: {
+        hidePostalCode:true
+      },
       valid: true,
       delivery: false,
       cardSafe: false,

@@ -14,13 +14,13 @@
                 <div style="">
                   <v-layout row>
                     <v-flex xs2>
-                      <img src="/facebook.svg" alt="" height="24px">
+                      <a href="https://www.facebook.com/ordinarygoddesses" target="_blank"><img src="/facebook.svg" alt="" height="24px"></a>
                     </v-flex>
                     <v-flex xs2>
-                      <img src="/instagram.svg" alt="" height="24px">
+                      <a href="https://www.instagram.com/ordinarygoddesses/" target="_blank"><img src="/instagram.svg" alt="" height="24px"></a>
                     </v-flex>
                     <v-flex xs2>
-                      <img src="/pinterest.svg" alt="" height="24px">
+                      <a href="https://www.pinterest.com.au/ordinarygoddesses" target="_blank"><img src="/pinterest.svg" alt="" height="24px"></a>
                     </v-flex>
                   </v-layout>
                 </div>

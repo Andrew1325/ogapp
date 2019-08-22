@@ -11,7 +11,7 @@
           <h1>Ordinary Shop</h1>
           <img src="/brush-stroke.svg" height="62px;">
           <p style="font-weight:400;">All those cool, vital, enriching, flattering, essential things you need. Have a look, find what you like and we'll bring it to you.</p>
-          <v-btn nuxt to="/shop/products" color="#ffe600">See our stuff</v-btn>
+          <v-btn nuxt to="/shop/products" outline color="#fefefe">See our stuff</v-btn>
         </div>
       </v-card>
     </v-flex>

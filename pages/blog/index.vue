@@ -22,7 +22,7 @@
               <div class="img-display">
                 <img :src="post.title_image" alt="">
               </div>
-              <h3>{{ post.title }}<br><br><br><small class="preview">{{ post.headline }}</small><br><br><small class="author-tah">by {{ post.author.name }} on {{ niceDate(post.updated_at) }}</small></h3>
+              <h3><span class="heady">{{ post.title }}</span><br><br><small class="preview">{{ post.headline }}</small><br><br><small class="author-tah">by {{ post.author.name }} on {{ niceDate(post.updated_at) }}</small></h3>
             </div>
           </nuxt-link>
         </div>
@@ -133,8 +133,12 @@ export default {
     max-height: 100%;
     overflow: hidden;
     position: relative;
+    line-height: 9pt;
   }
-  .pre-holder > h3 {
+  .heady {
+    line-height: 14pt;
+  }
+  .pre-holder >>> h3 {
     background-color: rgba(49, 49, 49, 0.515);
     color: white;
     padding: 12px;
@@ -143,7 +147,6 @@ export default {
     width: 100%;
     z-index: 1001;
     overflow: hidden;
-    line-height: 8pt;
   }
   .img-display {
     position: relative;

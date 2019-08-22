@@ -68,5 +68,6 @@
   .inner >>> p {
     font-size: 1.7rem;
     font-weight: 400;
+    text-align: justify;
   }
 </style>

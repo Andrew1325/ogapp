@@ -13,7 +13,7 @@
     </div>
     <div v-else>
       <div class="header">
-        <h1>GODDESS BLOG</h1>
+        <nuxt-link to="/blog" style="color:rgb(99, 99, 99); text-decoration:none;"><h1>GODDESS BLOG</h1></nuxt-link>
       </div>
       <main>
         <div class="intro" :style="!!post.title_image ? `background-image:url(${post.title_image})` : '/soap-bubble.jpg'">
@@ -135,7 +135,7 @@ export default {
     background-position: center;
   }
   .title {
-    height: 200px;
+    height: 260px;
     width: 380px;
     position: absolute;
     bottom: 24px;

@@ -44,7 +44,7 @@
               <v-text-field rounded color="#f8a83644" v-model="userForm.name" :rules="nameRules"></v-text-field><br>
               <small>Old Password - leave blank to retain existing</small><br>
               <v-text-field rounded slot flat type="password" style="position:relative; z-index:0;" color="#f8a83644" v-model="oldPassword"></v-text-field><br>
-              <small>New Password - leave blank to retain existing</small><br>              
+              <small>New Password - Password must be 8 characters or more, contain a capital and a number</small><br>              
               <v-text-field rounded slot type="password" flat style="position:relative; z-index:0;" color="#f8a83644" v-model="newPassword"></v-text-field><br>
               <small>Address</small><br>
               <v-text-field rounded color="#f8a83644" v-model="userForm.address"></v-text-field><br><br>
@@ -52,7 +52,7 @@
                 <input type="checkbox">
                 <span class="checkmark"></span>
               </label>
-              <button v-if="!snackbar" :disabled="!valid" type="submit">Sign Up</button>
+              <button v-if="!snackbar" :disabled="!valid" type="submit">Update your details</button>
             </div>
           </v-form>
         </div>

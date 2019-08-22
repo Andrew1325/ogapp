@@ -6,7 +6,7 @@
           <v-flex xs12 md8 offset-md2>
             <br><br>
             <v-card class="three-cont">
-              <v-card-title><v-img :src="nextEvent.image"><span class="main-event-title" style="font-size: 5.4rem" v-html="(nextEvent.title.split(' ')).join('<br>')"></span></v-img></v-card-title>
+              <v-img :src="nextEvent.image"><div class="main-event-title-holder"><span class="main-event-title">{{nextEvent.title}}</span></div></v-img>
               <v-content>
                 <v-divider></v-divider><br>
                 <p v-if="nextEvent.end_date === null">{{niceDate(nextEvent.start_date)}}</p>
@@ -75,24 +75,50 @@ export default {
 </script>
 
 <style scoped>
+  .e-body {
+    text-align: justify;
+  }
+  .e-body >>> p {
+    font-weight: 400 !important;
+    color:rgb(75, 75, 75);
+  }
+  .e-body >>> ul {
+    font-family: 'Raleway';
+    font-size: 1.4rem;
+    font-weight: 400;
+    color:rgb(75, 75, 75);
+    list-style: circle outside none;
+  }
   .three {
     /* background-color: rgb(218, 173, 119); */
     text-align: center;
   }
+  .main-event-title-holder {
+    background:rgba(153, 129, 133, 0.411);
+    position:relative;
+    top:46px;
+  }
   .main-event-title {
-    position:relative; 
-    top:45px;
+    text-align: center;
+    font-size: 5.8rem !important;
   }
-  .main-event-title >>> p {
-    line-height: 0.7rem;
+  .main-event-title, .other >>>p {
+    font-family: 'Playfair Display';
+    font-size: 4.7rem;
+    font-weight: 600;
+    color:rgb(231, 231, 231);
+    letter-spacing:0.4rem;
+    text-align: center;
   }
-  .v-card__title, .other {
-    font-family: 'Overlock', cursive;
-    color:white;
-    font-size: 3.6rem;
-    line-height: 4.2rem;
-    letter-spacing: -3px;
-    
+  @media (max-width: 660px) {
+    .main-event-title, .other >>>p {
+      font-size: 4.0rem;
+      line-height: unset;
+      top: 24px;
+    }
+    p {
+      padding: 28px;
+    }
   }
   .three h2 {
     font-family: 'Roboto';
@@ -110,8 +136,5 @@ export default {
   .three-cont h4 {
     font-weight: 200;
     font-size: 1.8rem;
-  }
-  .e-body {
-    text-align: justify;
   }
 </style>
