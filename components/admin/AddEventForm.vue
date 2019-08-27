@@ -344,7 +344,7 @@ export default {
     imageSubmit () {
       const formData = new FormData()
       formData.append('file', this.image)
-      this.$axios.post('api/upload', formData)
+      this.$axios.post('https://frozen-sierra-15453.herokuapp.com/api/upload', formData)
       this.image = ''
     },
     onCancel() {
