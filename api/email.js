@@ -1,5 +1,5 @@
 const express = require('express')
-const nodemailer = require('nodemailer')
+const mailjet = require('node-mailjet').connect(process.env.MJ_APIKEY_PUBLIC, process.env.MJ_APIKEY_PRIVATE)
 
 const app = express()
 
@@ -14,30 +14,39 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', function (req, res) {
-  sendMail(req.body)
+  
+  const request = mailjet.post("send", {'version': 'v3.1'}).request({
+    "Messages": [
+      {
+        "From": {
+          "Email": "noreply@ordinarygoddesses.com.au",
+            "Name": "Ordinary Goddesses"
+        },
+        "To": [
+          {
+            "Email": `${req.body.to}`,
+            "Name": "Goddess"
+          }
+        ],
+        "Subject": `${req.body.subject}`,
+        "TextPart": "This is a message from Ordinary Goddesses",
+        "HTMLPart": `Dear Goddess<br><br>${req.body.email}`
+      }
+    ]
+  })
+  
+  request.then((result) => {
+    console.log(result.body)
+  })
+  .catch((err) => {
+    console.log(err.statusCode)
+  })
+
+
   res.status(200).json({ 'message': 'OH YEAH' })
 })
 
 module.exports = {
   path: '/api/email',
   handler: app
-}
-
-const sendMail = (mailData) => {
-  let transporter = nodemailer.createTransport({
-    sendmail: true,
-    newline: 'unix',
-    path: '/usr/sbin/sendmail'
-  })
-  transporter.sendMail({
-    from: 'admin@ordinarygoddesses.com.au',
-    to: 'notyourthyme@gmail.com',
-    bcc: mailData.to,
-    subject: mailData.subject,
-    text: mailData.body,
-    attachments:[{
-      filename: mailData.fileName,
-      path: __dirname+'/../static/'+mailData.fileName
-  }]
-  })
 }

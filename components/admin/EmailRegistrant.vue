@@ -164,7 +164,7 @@ export default {
     attachSubmit () {
       const formData = new FormData()
       formData.append('file', this.file)
-      this.$axios.post('api/upload', formData)
+      this.$axios.post('https://frozen-sierra-15453.herokuapp.com/api/upload', formData)
       this.file = ''
     },
     sendMail() {
@@ -188,7 +188,7 @@ export default {
           filename: this.fileName
         }
       })
-      this.$axios.post('api/email', this.email)
+      this.$axios.post('https://frozen-sierra-15453.herokuapp.com/api/email', this.email)
       .then(res => console.log('ok'))
       .catch(err => console.log('not ok'))
     },

@@ -60,7 +60,7 @@
         <v-layout row wrap>
           <v-flex xs12 sm10 offset-sm1 xl8 offset-xl2>
             <v-layout row wrap>
-              <v-flex v-for="event in otherEvents" :key="event.title" xs12 md4>
+              <v-flex v-for="event in otherEvents" :key="event.title" xs12 md6 lg4>
                 <v-card style="margin:18px; outline: 1px solid rgb(157,157,157); outline-offset: 12px;">
                   <v-img :src="event.image" style="border: 5px solid white; min-height:280px;">
                     <div class="title-holder">
@@ -179,8 +179,12 @@ export default {
     font-size: 5.8rem !important;
   }
   @media (max-width:756px){
+    .main-event-title-holder {
+      top:5px;
+    }
     .main-event-title {
-      top:24px;
+      top:-10px;
+      font-size: 3.2rem !important;
     }
     .teaser > p {
       font-size: 1.1rem;

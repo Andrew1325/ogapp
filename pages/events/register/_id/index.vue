@@ -105,7 +105,7 @@
                     color="success"
                     @click="nopay"
                   >
-                    Registers
+                    Register
                   </v-btn>
                 </v-flex>
               </template>
@@ -198,144 +198,152 @@ export default {
       }
     },
     async pay() {
-      this.progress = true
-      await createToken().then(data => this.form.token = data.token.id)
-      this.form.cost = parseFloat(this.event.cost)
-      if (this.form.donation === '') {
-        this.form.donation = 0
-      }
-      this.form.donation = parseFloat(this.form.donation)
-      this.form.event = this.$route.params.id
-      this.$apollo.mutate({
-        mutation: gql`mutation createRegistration(
-          $event: String!
-          $email: String!
-          $name: String!
-          $phone: String
-          $address: String
-          $town: String
-          $state: String
-          $country: String
-          $postcode: String
-          $specReq: String
-          $cost: Float!
-          $donation: Float!
-          $token: String!
-        ) {
-          createRegistration (
-            data:{
-              event: $event
-              email: $email
-              name: $name
-              phone: $phone
-              address: $address
-              town: $town
-              state: $state
-              country: $country
-              postcode: $postcode
-              specReq: $specReq
-              cost: $cost
-              donation: $donation
-              token: $token
-          }) {
-            id
-          }
-        }`,
-        variables: this.form
-      })
-      .then((data) => {
-        this.progress = false
-        console.log(data)
-        this.dat = { ...data }
-        alert(`Your registration has been successfully processed. Your confirmation number is ${this.dat.data.createRegistration.id}. An email has been sent to your email address, ${this.form.email}. If you do not receive this email please check your spam/junk folder, or contact admin@ordinarygoddesses.com.au. Thank you for registering for ${this.event.title}.`)
-        this. form = {
-          event: '',
-          email: '',
-          name: '',
-          phone: '',
-          address: '',
-          town: '',
-          state: '',
-          country: '',
-          postcode: '',
-          specReq: '',
-          token: '',
-          cost: 0,
-          donation: ''
+      if (this.$refs.form.validate()) {
+        this.progress = true
+        await createToken().then(data => this.form.token = data.token.id)
+        this.form.cost = parseFloat(this.event.cost)
+        if (this.form.donation === '') {
+          this.form.donation = 0
         }
-        this.$router.push('/events')
-      }).catch((error) => {
-        this.progress = false
-        console.error(error)
-      })
+        this.form.donation = parseFloat(this.form.donation)
+        this.form.event = this.$route.params.id
+        this.$apollo.mutate({
+          mutation: gql`mutation createRegistration(
+            $event: String!
+            $email: String!
+            $name: String!
+            $phone: String
+            $address: String
+            $town: String
+            $state: String
+            $country: String
+            $postcode: String
+            $specReq: String
+            $cost: Float!
+            $donation: Float!
+            $token: String!
+          ) {
+            createRegistration (
+              data:{
+                event: $event
+                email: $email
+                name: $name
+                phone: $phone
+                address: $address
+                town: $town
+                state: $state
+                country: $country
+                postcode: $postcode
+                specReq: $specReq
+                cost: $cost
+                donation: $donation
+                token: $token
+            }) {
+              id
+            }
+          }`,
+          variables: this.form
+        })
+        .then((data) => {
+          this.progress = false
+          console.log(data)
+          this.dat = { ...data }
+          alert(`Your registration has been successfully processed. Your confirmation number is ${this.dat.data.createRegistration.id}. An email has been sent to your email address, ${this.form.email}. If you do not receive this email please check your spam/junk folder, or contact admin@ordinarygoddesses.com.au. Thank you for registering for ${this.event.title}.`)
+          this. form = {
+            event: '',
+            email: '',
+            name: '',
+            phone: '',
+            address: '',
+            town: '',
+            state: '',
+            country: '',
+            postcode: '',
+            specReq: '',
+            token: '',
+            cost: 0,
+            donation: ''
+          }
+          this.$router.push('/events')
+        }).catch((error) => {
+          this.progress = false
+          console.error(error)
+        })
+      } else {
+        this.valid = false
+      }
     },
     nopay() {
-      this.progress = true
-      if (this.form.donation === '') {
-        this.form.donation = 0
-      }
-      this.form.donation = parseFloat(this.form.donation)
-      this.form.event = this.$route.params.id
-      this.$apollo.mutate({
-        mutation: gql`mutation createRegistration(
-          $event: String!
-          $email: String!
-          $name: String!
-          $phone: String
-          $address: String
-          $town: String
-          $state: String
-          $country: String
-          $postcode: String
-          $specReq: String
-          $cost: Float!
-          $donation: Float!
-          $token: String!
-        ) {
-          createRegistration (
-            data:{
-              event: $event
-              email: $email
-              name: $name
-              phone: $phone
-              address: $address
-              town: $town
-              state: $state
-              country: $country
-              postcode: $postcode
-              specReq: $specReq
-              cost: $cost
-              donation: $donation
-              token: $token
-          }) {
-            id
-          }
-        }`,
-        variables: this.form
-      })
-      .then((data) => {
-        this.progress = false
-        this.dat = { ...data }
-        alert(`Your registration has been successfully processed. Your confirmation number is ${this.dat.data.createRegistration.id}. An email has been sent to your email address, ${this.form.email}. If you do not receive this email please check your spam/junk folder, or contact admin@ordinarygoddesses.com.au. Thank you for registering for ${this.event.title}.`)
-        this. form = {
-          event: '',
-          email: '',
-          name: '',
-          phone: '',
-          address: '',
-          town: '',
-          state: '',
-          country: '',
-          postcode: '',
-          specReq: '',
-          token: '',
-          cost: 0,
-          donation: ''
+      if (this.$refs.form.validate()) {
+        this.progress = true
+        if (this.form.donation === '') {
+          this.form.donation = 0
         }
-        this.$router.push('/events')
-      }).catch((error) => {
-        console.error(error)
-      })
+        this.form.donation = parseFloat(this.form.donation)
+        this.form.event = this.$route.params.id
+        this.$apollo.mutate({
+          mutation: gql`mutation createRegistration(
+            $event: String!
+            $email: String!
+            $name: String!
+            $phone: String
+            $address: String
+            $town: String
+            $state: String
+            $country: String
+            $postcode: String
+            $specReq: String
+            $cost: Float!
+            $donation: Float!
+            $token: String!
+          ) {
+            createRegistration (
+              data:{
+                event: $event
+                email: $email
+                name: $name
+                phone: $phone
+                address: $address
+                town: $town
+                state: $state
+                country: $country
+                postcode: $postcode
+                specReq: $specReq
+                cost: $cost
+                donation: $donation
+                token: $token
+            }) {
+              id
+            }
+          }`,
+          variables: this.form
+        })
+        .then((data) => {
+          this.progress = false
+          this.dat = { ...data }
+          alert(`Your registration has been successfully processed. Your confirmation number is ${this.dat.data.createRegistration.id}. An email has been sent to your email address, ${this.form.email}. If you do not receive this email please check your spam/junk folder, or contact admin@ordinarygoddesses.com.au. Thank you for registering for ${this.event.title}.`)
+          this. form = {
+            event: '',
+            email: '',
+            name: '',
+            phone: '',
+            address: '',
+            town: '',
+            state: '',
+            country: '',
+            postcode: '',
+            specReq: '',
+            token: '',
+            cost: 0,
+            donation: ''
+          }
+          this.$router.push('/events')
+        }).catch((error) => {
+          console.error(error)
+        })
+      } else {
+        this.valid = false
+      }
     }
   }
 }
