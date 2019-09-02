@@ -9,11 +9,7 @@
         <div class="box-logo"></div>
         <div class="about"><br><br><br><br>
 
-          <p style="font-weight:400;">Founded in 2018, Ordinary Goddesses Here, I have invoked the createdb utility and passed it the patrick user to use for connecting to the database. It is that user whose permissions will be checked to execute the create command.
-
-It is very, very rare that you will want to change a database after it is created. The only things you can change are its name and some configuration parameters. Changing configuration parameters (such as collation or character sets) have implications that go far outside of this tutorial. However, we can change the name if we’d like.
-
-Again, there is no command line tool to change a database once it’s created. We must use psql.</p>
+          <p style="font-weight:400;">We are women who are passionate about our community and creating opportunities for women to connect, have fun, and step into and honour their true selves; to gather in a place where they can drop all sense of professional responsibility, life expectations, and labels – such as those of wife, mother, caretaker, dinner maker – and lovingly focus on their inner Goddess. We are women who are healers, yogis, artists, cooks, professionals, entrepreneurs, farmers, gardeners, girlfriends, wives, sisters, daughters...but most of all, just like you, we are GODDESSES.</p>
         </div>
       </div>
     </v-flex>

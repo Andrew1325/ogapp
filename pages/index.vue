@@ -235,7 +235,7 @@ export default {
     }
   }
   .one {
-    background:linear-gradient( rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3)100%),url("/tulip.jpg");
+    background:linear-gradient( rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3)100%),url("/tulip2.jpg");
     background-size: cover;
     position: relative;
   }
@@ -314,7 +314,7 @@ export default {
   }
   .para-div {
     position: relative;
-    background-image: url('/woman-log.jpg');
+    background-image: url('/woman-log2.jpg');
     background-attachment: fixed;
     background-size: cover;
   }
