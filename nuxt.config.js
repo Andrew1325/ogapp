@@ -125,6 +125,9 @@ export default {
     */
     extend(config, ctx) {
     },
-    serverMiddleware: ['~/api/upload']
+    serverMiddleware: [
+      'redirect-ssl',
+      '~/api/upload'
+    ]
   }
 }
