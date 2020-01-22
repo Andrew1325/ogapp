@@ -24,13 +24,12 @@ var storage = multer.diskStorage({
   }
 })
 
-const upload = multer ({
+const upload = multer({
   storage: storage,
   fileFilter,
   limits: {
       fileSize: MAX_SIZE
   },
-
 })
 
 app.use((req, res, next) => {
