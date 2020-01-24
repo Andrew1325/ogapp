@@ -1,6 +1,9 @@
 {
   "name": "ordinary-goddesses",
   "version": "1.5.1",
+  "engines": {
+    "node": "12.14.0"
+  },
   "description": "Ordinary Goddesses site with events. blog, shop",
   "author": "andrewwillmott",
   "private": true,
