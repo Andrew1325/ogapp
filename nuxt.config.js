@@ -94,6 +94,7 @@ export default {
   },
 
   serverMiddleware: [
+    'redirect-ssl',
     '~/api/upload',
     '~/api/email'
   ],
