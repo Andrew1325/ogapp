@@ -53,7 +53,7 @@
               </table>
             </template>
             <template v-else>
-              {{regsDetail}}
+              {{users}}
               <h2>There have been no event registrations in the past week.</h2>
             </template>
             <br><br>
@@ -83,8 +83,7 @@
         </v-flex>
         <v-flex xs12 md3>
           <div class="second-row second-sec">
-            
-              ha <br>
+             <br>
               {{user}}
             
           </div>
@@ -101,8 +100,21 @@ import ChartLineOrds from "@/components/admin/chartLineOrds"
 import ChartBar from "@/components/admin/chartBar"
 import AddPostForm from "@/components/admin/AddPostForm"
 import { mapGetters, mapMutations } from 'vuex';
-
+import gql from 'graphql-tag'
+ 
 export default {
+  apollo: {
+    users: gql`query {
+      users {
+        id
+        name
+        email
+        role {
+          permissions
+        }
+      }
+    }`,
+  },
   components: {
     ChartDoughnut,
     ChartLine,

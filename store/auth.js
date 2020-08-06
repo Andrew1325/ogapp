@@ -6,7 +6,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER (state, usr) {
+  SET_USER(state, usr) {
     let data = JSON.parse(JSON.stringify(usr.me))
     state.user = {
       id: data.id,
@@ -15,17 +15,21 @@ export const mutations = {
     }
     console.log(state.user)
   },
-  SET_ADMIN_LINKS (state, link) {
+  SET_ADMIN_LINKS(state, link) {
     state.adminLinks = link
   }
 }
 
 export const actions = {
-  async setUser({ commit }, res) {
+  async setUser({
+    commit
+  }, res) {
     let client = this.app.apolloProvider.defaultClient
     await client.query({
       query: me
-    }).then(({data}) => commit('SET_USER', data))
+    }).then(({
+      data
+    }) => commit('SET_USER', data))
   }
 }
 

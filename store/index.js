@@ -40,22 +40,22 @@ export const getters = {
 }
 
 export const mutations = {
-  setVisits (state, data) {
+  setVisits(state, data) {
     state.visits = data
   },
-  setDevices (state, data) {
+  setDevices(state, data) {
     state.devices = data.updateDevice
   },
-  setOrders (state, data) {
+  setOrders(state, data) {
     state.orders = data
   },
-  setWeeksRegDetail (state, data) {
+  setWeeksRegDetail(state, data) {
     state.regsDetail = data
   },
-  setRegs (state, data) {
+  setRegs(state, data) {
     state.regs = data
   },
-  SET_USER (state, usr) {
+  SET_USER(state, usr) {
     if (usr === null) {
       Vue.set(state, 'user', null)
     } else {
@@ -71,27 +71,36 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit ({ dispatch }) {
+  async nuxtServerInit({
+    dispatch
+  }) {
     await dispatch('getUser')
     await dispatch('event/getEvents')
   },
 
-  async getUser (vuexContext) {
+  async getUser(vuexContext) {
     const tokenCookie = await this.$cookiez.get('apollo-token')
-    console.log(tokenCookie)
+
     if (!!tokenCookie) {
       let client = this.app.apolloProvider.defaultClient
-      await client.query({
-        query: me
-      }).then(({data}) => vuexContext.commit('SET_USER', data))
+      client.query({
+          query: me
+        }).then(({
+          data
+        }) => {
+          vuexContext.commit('SET_USER', data)
+        })
+        .catch(err => console.log('err ', err))
     }
   },
 
-  onLogout (vuexContext) {
+  onLogout(vuexContext) {
     vuexContext.commit('SET_USER', null)
   },
 
-  async getIP ({ commit }) {
+  async getIP({
+    commit
+  }) {
     let ip = await this.$axios.$get('https://icanhazip.com')
     ip = ip.trim()
     const client = this.app.apolloProvider.defaultClient
@@ -105,7 +114,7 @@ export const actions = {
     var date = new Date();
     var last = new Date(date.getTime() - (6 * 24 * 60 * 60 * 1000))
     var weekago = last.toISOString()
-    
+
     let vis = await client.query({
       query: visits,
       variables: {
@@ -115,13 +124,13 @@ export const actions = {
 
     var dayStart = new Date()
     dayStart = Date.parse(dayStart)
-    
+
     var counts = []
     const weeksVisits = JSON.parse(JSON.stringify(vis.data.visits))
     for (let i = 0; i < 7; i++) {
       let thisDay = []
       for (let a = 0; a < weeksVisits.length; a++) {
-        if (Date.parse(weeksVisits[a].created_at) > (dayStart - (86400000*(i+1))) && Date.parse(weeksVisits[a].created_at) < (dayStart - (86400000*(i)))) {
+        if (Date.parse(weeksVisits[a].created_at) > (dayStart - (86400000 * (i + 1))) && Date.parse(weeksVisits[a].created_at) < (dayStart - (86400000 * (i)))) {
           thisDay.push(weeksVisits[a])
         }
       }
@@ -130,7 +139,9 @@ export const actions = {
     commit('setVisits', counts.reverse())
   },
 
-  async getRegisters({ commit }) {
+  async getRegisters({
+    commit
+  }) {
     const client = this.app.apolloProvider.defaultClient
     var date = new Date();
     var last = new Date(date.getTime() - (6 * 24 * 60 * 60 * 1000))
@@ -142,7 +153,6 @@ export const actions = {
         date: weekago
       }
     })
-    console.log(regs.data.weeklyRegistrations)
     commit("setWeeksRegDetail", regs.data.weeklyRegistrations)
     let regCount = []
 
@@ -152,7 +162,7 @@ export const actions = {
     for (let i = 0; i < 7; i++) {
       let thisDay = []
       for (let a = 0; a < weeksRegs.length; a++) {
-        if (Date.parse(weeksRegs[a].created_at) > (dayStart - (86400000*(i+1))) && Date.parse(weeksRegs[a].created_at) < (dayStart - (86400000*(i)))) {
+        if (Date.parse(weeksRegs[a].created_at) > (dayStart - (86400000 * (i + 1))) && Date.parse(weeksRegs[a].created_at) < (dayStart - (86400000 * (i)))) {
           thisDay.push(weeksRegs[a])
         }
       }
@@ -161,7 +171,9 @@ export const actions = {
     commit('setRegs', regCount.reverse())
   },
 
-  async getOrders({ commit }) {
+  async getOrders({
+    commit
+  }) {
     const client = this.app.apolloProvider.defaultClient
     var date = new Date();
     var last = new Date(date.getTime() - (6 * 24 * 60 * 60 * 1000))
@@ -174,7 +186,7 @@ export const actions = {
       }
     })
     const weeksOrds = JSON.parse(JSON.stringify(regs.data.orders))
-    let count = [0,0,0,0,0,0,0]
+    let count = [0, 0, 0, 0, 0, 0, 0]
 
     var dayStart = new Date()
     dayStart = Date.parse(dayStart)
@@ -182,7 +194,7 @@ export const actions = {
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     if (weeksOrds.length > 0) {
       for (let i = 0; i < 7; i++) {
-        let thisDay = weeksOrds.find(o => Date.parse(o.created_at) > (dayStart - (86400000*(i+1))) && Date.parse(o.created_at) < (dayStart - (86400000*(i))) )
+        let thisDay = weeksOrds.find(o => Date.parse(o.created_at) > (dayStart - (86400000 * (i + 1))) && Date.parse(o.created_at) < (dayStart - (86400000 * (i))))
         if (thisDay.length > 0) {
           let daysTots = thisDay.map(x => x.order_detail.total)
           daysTots = daysTots.reduce(reducer)
@@ -190,17 +202,19 @@ export const actions = {
         }
       }
     }
-    
+
     commit('setOrders', count.reverse())
   },
 
-  async nuxtClientInit( vuexContext, { req }, ctx) {
+  async nuxtClientInit(vuexContext, {
+    req
+  }, ctx) {
     const client = this.app.apolloProvider.defaultClient
     let deviceCount = await client.query({
       query: devices
     })
-    let counter = [deviceCount.data.devices[0].mobile,deviceCount.data.devices[0].tablet,deviceCount.data.devices[0].desktop]
-    
+    let counter = [deviceCount.data.devices[0].mobile, deviceCount.data.devices[0].tablet, deviceCount.data.devices[0].desktop]
+
     let device
     if (this.$device.isTablet) {
       device = 'Tablet'
@@ -220,12 +234,13 @@ export const actions = {
       tablet: counter[1],
       desktop: counter[2]
     }
-    console.log('devices '+updateDevices.id)
     const res = await client.mutate({
       mutation: updateDevice,
       variables: updateDevices
-    }).then(({data}) => vuexContext.commit('setDevices', data))
-    
+    }).then(({
+      data
+    }) => vuexContext.commit('setDevices', data))
+
     const cartStore = await this.$cookiez.get('cart')
     if (!!cartStore) {
       vuexContext.dispatch('cart/setCartItems', cartStore)
@@ -234,5 +249,5 @@ export const actions = {
     vuexContext.dispatch('getRegisters')
     vuexContext.dispatch('getOrders')
   },
-  
+
 }
