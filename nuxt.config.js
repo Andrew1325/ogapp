@@ -5,34 +5,48 @@ export default {
   mode: 'universal',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
-    script: [{ src: 'https://js.stripe.com/v3' }],
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+    script: [{
+      src: 'https://js.stripe.com/v3'
+    }],
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: pkg.description
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    link: [{
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Raleway:100,200,400,500|Playfair Display|Material+Icons|Material+Icons+Outlined|Overlock&display=swap'
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Raleway:100,200,400,500|Playfair Display|Material+Icons|Material+Icons+Outlined|Overlock&display=swap'
       }
     ]
   },
 
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#fff'
+  },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: [
     '~/assets/style/app.styl',
     '~/assets/main.css',
@@ -41,8 +55,8 @@ export default {
   ],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
     '@/plugins/vuetify',
     '@plugins/aos.client.js',
@@ -53,14 +67,16 @@ export default {
   ],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
     'nuxt-device-detect',
-    ['cookie-universal-nuxt', { alias: 'cookiez' }],
+    ['cookie-universal-nuxt', {
+      alias: 'cookiez'
+    }],
     '@nuxtjs/sitemap',
     ['@nuxtjs/robots', {
       robots: {
@@ -70,8 +86,8 @@ export default {
     }]
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
@@ -94,7 +110,7 @@ export default {
   },
 
   serverMiddleware: [
-    'redirect-ssl',
+    // 'redirect-ssl',
     '~/api/upload',
     '~/api/email'
   ],
@@ -103,25 +119,28 @@ export default {
     middleware: ['auth']
   },
 
-  transition:
-  {
+  transition: {
     name: 'fade',
     mode: 'out-in'
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     babel: {
-      presets({ isServer }) {
+      presets({
+        isServer
+      }) {
         return [
           [
             require.resolve('@nuxt/babel-preset-app'),
             // require.resolve('@nuxt/babel-preset-app-edge'), // For nuxt-edge users
             {
               buildTarget: isServer ? 'server' : 'client',
-              corejs: { version: 3 }
+              corejs: {
+                version: 3
+              }
             }
           ]
         ]
@@ -136,12 +155,11 @@ export default {
       }
     },
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    },
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {},
     serverMiddleware: [
-      'redirect-ssl',
+      // 'redirect-ssl',
       '~/api/upload'
     ]
   }
