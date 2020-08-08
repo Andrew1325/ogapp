@@ -410,7 +410,7 @@ export default {
           // check method
           ///////////
 
-          this.$axios.post('https://frozen-sierra-15453.herokuapp.com/api/upload', formData)
+          this.$axios.post('/api/upload', formData)
           .then(res => {
               console.log('uploaded')
           })
@@ -428,7 +428,7 @@ export default {
         ///////////
         
         this.$axios({
-          url: 'https://frozen-sierra-15453.herokuapp.com/api/upload',
+          url: '/api/upload',
           method: 'POST',
           data: formData
         })

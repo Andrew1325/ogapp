@@ -60,6 +60,7 @@ export const mutations = {
       Vue.set(state, 'user', null)
     } else {
       let data = JSON.parse(JSON.stringify(usr.me))
+      console.log('reloaded user', data)
       Vue.set(state, 'user', {
         id: data.id,
         name: data.name,
@@ -83,7 +84,7 @@ export const actions = {
 
     if (!!tokenCookie) {
       let client = this.app.apolloProvider.defaultClient
-      client.query({
+      await client.query({
           query: me
         }).then(({
           data

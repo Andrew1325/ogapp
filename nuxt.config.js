@@ -2,6 +2,16 @@ import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
 
 export default {
+  publicRuntimeConfig: {
+
+  },
+  privateRuntimeConfig: {
+    mjPrivateKey: process.env.MJ_APIKEY_PRIVATE,
+    mjPublicKey: process.env.MJ_APIKEY_PUBLIC,
+    prismaEndpoint: process.env.PRISMA_ENDPOINT,
+    prismaToken: process.env.PRISMA_TOKEN,
+    nstripeSecret: process.env.STRIPE_SECRET
+  },
   mode: 'universal',
 
   /*
@@ -110,7 +120,7 @@ export default {
   },
 
   serverMiddleware: [
-    // 'redirect-ssl',
+    // 'redirect-ssl', // for hosting on heroku - should be removed for digital ocean
     '~/api/upload',
     '~/api/email'
   ],
@@ -159,8 +169,9 @@ export default {
      */
     extend(config, ctx) {},
     serverMiddleware: [
-      // 'redirect-ssl',
-      '~/api/upload'
+      // 'redirect-ssl', // for hosting on heroku - should be removed for digital ocean
+      '~/api/upload',
+      '~/api/email'
     ]
   }
 }

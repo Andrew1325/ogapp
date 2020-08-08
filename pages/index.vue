@@ -7,162 +7,125 @@
           <h1>
             Welcome back
             <br />
-            {{user.name.split(" ")[0]}}
+            {{ user.name.split(" ")[0] }}
           </h1>
         </div>
-        <div class="teaser" v-else>
+        <div class="teaser" style="line-height: 2.2rem;" v-else>
           <h1>
-            <span id="seed">Transformational Retreats</span>
+            <span id="seed"
+              >Transformational <br />
+              Retreats</span
+            >
             <span id="change">For Women</span>
           </h1>
-          <p
-            class="what"
-            style="font-weight: 400;"
-          >Claim your sovereignty and find personal empowerment through the deep connection and community of true sisterhood</p>
-          <!-- <v-btn nuxt to="/theme" class="whatbtn" outline color="white">Read More</v-btn> -->
+          <br />
+          <p class="what" style="font-weight: 400; line-height: 1.6rem;">
+            Claim your sovereignty and find personal empowerment through the
+            deep connection and community of true sisterhood
+          </p>
         </div>
       </v-card>
     </v-flex>
-    <v-flex xs12 md6 class="too too-left">
-      <div class="two-image-holder" data-aos="fade-up-right">
-        <img src="/mandalaGrey.svg" width="100%" />
-        <h1></h1>
-        <br />
-        <p style="text-align:center;">
-          <br />
-          <br />
-          <i>“Every woman who heals herself helps heal all the women who came before her, and all those who come after her.”</i>
-          <br />
-          <small>Christine Northrup</small>
-        </p>
-        <v-divider color="white"></v-divider>
-        <br />
-        <br />
-        <p style="text-align:center; font-weight:400; font-size:1.4rem;">
-          <v-btn nuxt to="/events" class="retreat-btn" color="rgb(244, 24, 244)" outline>Retreats</v-btn>
-          <br />
-          <br />
-          <v-btn nuxt to="/events" class="retreat-btn" color="rgb(214, 24, 214)" outline>Programs</v-btn>
-          <br />
-          <br />
-          <v-btn nuxt to="/events" class="retreat-btn" color="rgb(184, 24, 184)" outline>Courses</v-btn>
-          <br />
-          <br />
-        </p>
-      </div>
-    </v-flex>
-    <v-flex xs12 md6 class="too too-right">
-      <div
-        class="two-text-holder"
-        data-aos="fade-up-left"
-        data-aos-delay="300"
-        data-aos-anchor-placement="center-bottom"
-      >
-        <br />
-        <br />
-        <br />
-
-        <p>Do you feel as though you give so much of your time and energy to others that you have none left for yourself?</p>
-        <p>Do you have a deep longing for true sisterhood and nourishing connection with like-minded women?</p>
-        <p>Do you want to spend time in a space where nobody needs anything from you; to reconnect with yourself, replenish your soul, and return to your life feeling lighter, stronger, and sovereign?</p>
-        <p>Are you ready to go on a journey of shared + personal discovery and transformation?</p>
-        <p>Would it feel good to be truly seen + heard without judgement, supported unconditionally, and loved for exactly who you are?</p>
-        <p>If you answered yes to ANY of these questions, then an Ordinary Goddess Retreat is for YOU.</p>
-        <div class="more-btn">
-          <br />
-          <br />
-          <br />
-          <v-btn
-            nuxt
-            to="/events"
-            style="text-align: center"
-            color="#888"
-            outline
-          >I want to know more</v-btn>
-          <br />
-        </div>
-      </div>
-    </v-flex>
-
-    <!-- <v-flex xs12>
-      <v-card flat class="all two hidden-sm-and-down">
-        <v-parallax dark height="1280" src="/para-bg1.svg">
-          <v-layout row wrap>
-            <v-flex xs12 md6>
-              <div class="two-image-holder" data-aos="fade-up-right">
-                <img src="/logo.svg" width="100%" />
-                <h1>transformational retreats for women</h1>
-                <br />
-                <p style="text-align:center;">
-                  <i>“Every woman who heals herself helps heal all the women who came before her, and all those who come after her.”</i>
-                  <br />
-                  <small>Christine Northrup</small>
-                </p>
-                <v-divider color="white"></v-divider>
-                <br />
-                <br />
-                <p style="text-align:center; font-weight:400; font-size:1.4rem;">
-                  <span v-if="openEvent">We are currently taking bookings for</span>
-                  <span v-else>Our latest event:</span>
-                  <br />
-                  <br />
-                  <span style="font-size:1.8rem;">{{events[0].title}}</span>
-                  <br />
-                  <br />For details and to book...
-                  <br />
-                  <br />
-                  <v-btn nuxt to="/events" color="white" outline>See Events</v-btn>
-                </p>
-              </div>
-            </v-flex>
-            <v-flex xs12 md6>
-              <div
-                class="two-text-holder"
-                data-aos="fade-up-left"
-                data-aos-delay="300"
-                data-aos-anchor-placement="center-bottom"
+    <div class="gallery">
+      <div class="gallery__list">
+        <div class="two-image-holder-holder">
+          <div class="two-image-holder">
+            <img src="/mandalaGrey.svg" width="100%" />
+            <h1></h1>
+            <br />
+            <p style="text-align:center;">
+              <br />
+              <br />
+              <i
+                >“Every woman who heals herself helps heal all the women who
+                came before her, and all those who come after her.”</i
               >
-                <h1>What is a Goddess?</h1>
-                <p>
-                  A woman who is in the process of learning to accept and love herself on all levels: Mind, Body and Spirit. A woman who knows and understands herself, her wants and her needs, inside and out. A woman who, because she focuses on personal growth and self-awareness, experiences a life filled with peace, love, joy, passion and fun. A woman who understands that she has the capacity to steer her life in any direction she wants, and who is inspired to give to those around her due to her sense of gratitude and abundance.
-                  <br />
-                  <br />There is a goddess within each and every one of us. So whether you need to find her, awaken her, or simply nurture her and let her shine, know that you will be supported and guided through it all when you choose to attend an Ordinary Goddesses retreat.
-                </p>
-              </div>
-            </v-flex>
-          </v-layout>
-        </v-parallax>
-      </v-card>
+              <br />
+              <small>Christine Northrup</small>
+            </p>
+            <v-divider color="white"></v-divider>
+            <br />
+            <br />
+            <p style="text-align:center; font-weight:400; font-size:1.4rem;">
+              <v-btn
+                nuxt
+                to="/events"
+                class="retreat-btn"
+                color="rgb(244, 24, 244)"
+                outline
+                >Retreats</v-btn
+              >
+              <br />
+              <br />
+              <v-btn
+                nuxt
+                to="/events"
+                class="retreat-btn"
+                color="rgb(214, 24, 214)"
+                outline
+                >Programs</v-btn
+              >
+              <br />
+              <br />
+              <v-btn
+                nuxt
+                to="/events"
+                class="retreat-btn"
+                color="rgb(184, 24, 184)"
+                outline
+                >Courses</v-btn
+              >
+            </p>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div class="two-text-holder-holder">
+          <div class="two-text-holder">
+            <br />
+            <br />
+            <br />
 
-      <v-card flat class="all two hidden-md-and-up">
-        <v-parallax dark height="1230" src="/para-bg1.svg">
-          <v-layout row wrap>
-            <v-flex xs12 md6>
-              <div class="two-sm-image-holder">
-                <img src="/logo.svg" />
-                <h1>transformational retreats for women</h1>
-                <br />
-                <p style="text-align:center;">
-                  <i>“Every woman who heals herself helps heal all the women who came before her, and all those who come after her.”</i>
-                  <br />
-                  <small>Christine Northrup</small>
-                </p>
-              </div>
-            </v-flex>
-            <v-flex xs12 md6>
-              <div class="two-sm-text-holder">
-                <h1>What is a Goddess?</h1>
-                <p>
-                  A woman who is in the process of learning to accept and love herself on all levels: Mind, Body and Spirit. A woman who knows and understands herself, her wants and her needs, inside and out. A woman who, because she focuses on personal growth and self-awareness, experiences a life filled with peace, love, joy, passion and fun. A woman who understands that she has the capacity to steer her life in any direction she wants, and who is inspired to give to those around her due to her sense of gratitude and abundance.
-                  <br />
-                  <br />There is a goddess within each and every one of us. So whether you need to find her, awaken her, or simply nurture her and let her shine, know that you will be supported and guided through it all when you choose to attend an Ordinary Goddesses retreat.
-                </p>
-              </div>
-            </v-flex>
-          </v-layout>
-        </v-parallax>
-      </v-card>
-    </v-flex>-->
+            <p>
+              Do you feel as though you give so much of your time and energy to
+              others that you have none left for yourself?
+            </p>
+            <p>
+              Do you have a deep longing for true sisterhood and nourishing
+              connection with like-minded women?
+            </p>
+            <p>
+              Do you want to spend time in a space where nobody needs anything
+              from you; to reconnect with yourself, replenish your soul, and
+              return to your life feeling lighter, stronger, and sovereign?
+            </p>
+            <p>
+              Are you ready to go on a journey of shared + personal discovery
+              and transformation?
+            </p>
+            <p>
+              Would it feel good to be truly seen + heard without judgement,
+              supported unconditionally, and loved for exactly who you are?
+            </p>
+            <p>
+              If you answered yes to ANY of these questions, then an Ordinary
+              Goddess Retreat is for YOU.
+            </p>
+            <br /><br />
+            <p style="text-align:center; font-weight:400; font-size:1.4rem;">
+              <v-btn
+                nuxt
+                to="/events"
+                class="retreat-btn"
+                color="rgb(5, 200, 200)"
+                outline
+                >I want to know more</v-btn
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <v-flex xs12>
       <v-card flat class="all three">
@@ -181,48 +144,7 @@
         </div>
       </v-card>
     </v-flex>
-    <!-- <v-flex xs12>
-      <v-card flat class="all four">
-        <v-parallax dark height="1230" src="/mand-bg.svg">
-    <v-layout row wrap>-->
-    <!-- <v-flex class="hidden-sm-and-down" md10 offset-md1 lg8 offset-lg2>
-              <div
-                class="trio"
-                data-aos="zoom-out-right"
-                @mouseenter="merge = true"
-                @mouseleave="merge = false"
-              >
-                <v-layout>
-                  <v-flex xs4>
-                    <div class="tri1">
-                      <h1>Do You</h1>
-                      <div :class="[!merge ? 'tri1bg1' : 'tri1bg2']" class="tri-img2"></div>
-                    </div>
-                  </v-flex>
-                  <v-flex xs4>
-                    <div class="tri2">
-                      <h1>Want</h1>
-                      <div :class="[!merge ? 'tri1bg1' : 'tri1bg2']" class="tri-img1"></div>
-                    </div>
-                  </v-flex>
-                  <v-flex xs4>
-                    <div class="tri3">
-                      <h1>More?</h1>
-                    </div>
-                  </v-flex>
-                </v-layout>
-              </div>
-    </v-flex>-->
-    <!-- <v-flex class="hidden-sm-and-down" md8 offset-md3 lg6 offset-lg4>
-              <div class="tri-text" data-aos="zoom-out-left">
-                <p style="font-size:1.4rem;">
-                  <i>“An empowered woman tends her inner fire, lights up those around her and sparks divine transformation within and without.”</i>
-                  <br />
-                  <br />
-                  <small>Shikoba</small>
-                </p>
-              </div>
-    </v-flex>-->
+
     <v-flex xs12 class="for">
       <v-layout row wrap style="padding:14vh 0;">
         <v-flex xs12 md4>
@@ -243,7 +165,11 @@
         <v-flex xs10 offset-xs1>
           <div class="ts tri-sm-4">
             <p style="text-align:center;">
-              <i>“An empowered woman tends her inner fire, lights up those around her and sparks divine transformation within and without.”</i>
+              <i
+                >“An empowered woman tends her inner fire, lights up those
+                around her and sparks divine transformation within and
+                without.”</i
+              >
               <br />
               <br />
               <small>Shikoba</small>
@@ -252,18 +178,16 @@
         </v-flex>
       </v-layout>
     </v-flex>
-    <!-- </v-layout>
-        </v-parallax>
-      </v-card>
-    </v-flex>-->
+
     <v-flex xs12>
       <v-card flat class="carousel">
         <v-carousel interval="7500" hide-controls hide-delimiters>
           <h1 class="said">What women love about Ordinary Goddess Retreats</h1>
+          <br />
           <v-carousel-item v-for="(q, i) in quotes" :key="i" src>
             <div>
               <span>
-                <h1 style="font-size:1.2rem;">"{{q}}"</h1>
+                <h1 style="font-size:1.2rem;">"{{ q }}"</h1>
               </span>
             </div>
           </v-carousel-item>
@@ -279,22 +203,25 @@
               <div class="five-text-holder">
                 <h1>Goddess Words</h1>
                 <p style="font-weight:400; font-size:1.3rem;">
-                  <i>“When women get together, they tell stories. That is how it has always been. Telling stories is our way of saying where we have come from, what we know, and where we might be headed.</i>
+                  <i
+                    >“When women get together, they tell stories. That is how it
+                    has always been. Telling stories is our way of saying where
+                    we have come from, what we know, and where we might be
+                    headed.</i
+                  >
                   <br />
                   <br />
                   <small>Jalaja Bonheim</small>
                   <br />
                   <br />
-                  <v-btn nuxt to="/blog" outline color="white">Read our blog</v-btn>
+                  <v-btn nuxt to="/blog" outline color="white"
+                    >Read our blog</v-btn
+                  >
                 </p>
               </div>
             </v-flex>
             <v-flex xs12 md6>
-              <div
-                class="five-image-holder hidden-xs-only"
-                data-aos="fade-up-left"
-                data-aos-delay="300"
-              >
+              <div class="five-image-holder hidden-sm-and-down">
                 <img src="/girl-candle.jpg" width="100%" />
               </div>
             </v-flex>
@@ -390,49 +317,47 @@ export default {
   left: 46%;
   top: 30px;
 }
-.too {
+.gallery {
+  position: relative;
+  z-index: 0;
+}
+.gallery > .gallery__list {
+  margin: 0.1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 0.1rem;
+  grid-auto-flow: dense;
+}
+
+.two-image-holder-holder {
+  position: relative;
   height: 100%;
-  min-height: 56vh;
   width: 100%;
+  margin: 0;
+  background-color: rgb(247, 247, 247);
   border: 4px solid white;
-  border-top: 0px;
+  padding: 30px;
 }
-.too-right {
-  border-left: 0px;
+.two-text-holder-holder {
   position: relative;
-  padding: 30px 0;
-}
-.too-left {
-  background: rgb(252, 252, 252);
-  position: relative;
-  padding: 30px 0;
-}
-.two {
-  /* background-image: url("/lotus-bg.svg");
-  background-size: cover;
-  background-color: rgb(197, 197, 197); */
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: rgb(254, 254, 254);
   border: 4px solid white;
-  border-top: 0px;
+  padding: 30px;
 }
 .two-image-holder {
   position: relative;
-  min-height: 130%;
-  padding: 30px 16px;
+  padding: 100px 20px !important;
   margin: 0 auto;
-  background: rgb(255, 255, 255);
   border: 1px solid rgb(244, 24, 244);
   border-radius: 0 6vw 0 6vw;
 }
 .two-image-holder > img {
   margin: 0 28%;
   width: 44%;
-}
-.two-sm-image-holder {
-  width: 100%;
-  margin-top: 18px;
-  padding: 16px;
-  background: rgba(179, 2, 149, 0.508);
-  border-radius: 0 12vw 0 12vw;
 }
 .two-image-holder,
 .two-sm-image-holder h1 {
@@ -452,13 +377,6 @@ export default {
   border: 1px solid rgb(25, 250, 250);
   border-radius: 6vw 0 6vw 0;
   color: rgb(22, 22, 22);
-}
-.two-sm-text-holder {
-  width: 100%;
-  padding: 16px;
-  background: rgba(226, 181, 0, 0.618);
-  border-radius: 12vw 0 12vw 0;
-  color: white;
 }
 .retreat-btn {
   min-width: 186px;
@@ -492,110 +410,6 @@ export default {
   background-color: rgb(66, 66, 77);
   background-image: url("/mand-bg.svg");
 }
-.trio {
-  position: relative;
-  top: 120px;
-  background-image: url("/3women.jpg");
-  background-size: cover;
-}
-.trio-text {
-  position: absolute;
-  top: 605px;
-  left: -140px;
-  width: 30vw;
-  z-index: 203;
-  color: white;
-}
-.trio h1 {
-  text-align: center;
-  line-height: 520px;
-  letter-spacing: 0.6rem;
-  font-size: 3.1rem;
-  color: white;
-}
-
-.tri1 {
-  position: relative;
-  height: 520px;
-  width: 100%;
-  border-right: 12px solid rgb(66, 66, 77);
-}
-.tri2 {
-  position: relative;
-  height: 520px;
-  width: 100%;
-  border-right: 12px solid rgb(66, 66, 77);
-}
-.tri-img1 {
-  position: absolute;
-  top: 0;
-  background-image: url("/candle.jpg");
-  background-size: cover;
-  opacity: 1;
-  height: 100%;
-  width: 100%;
-}
-.tri-img2 {
-  position: absolute;
-  top: 0;
-  background-image: url("/yoga1.jpg");
-  background-size: cover;
-  opacity: 1;
-  height: 100%;
-  width: 100%;
-}
-.tri1bg1 {
-  animation-name: bgfade;
-  animation-direction: forwards;
-  animation-duration: 0.6s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-.tri1bg2 {
-  animation-name: bgfade2;
-  animation-direction: forwards;
-  animation-duration: 0.6s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes bgfade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes bgfade2 {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.tri3 {
-  height: 520px;
-  width: 101%;
-  border-right: 12px solid rgb(66, 66, 77);
-}
-.tri-text {
-  background: rgba(78, 36, 16, 0.418);
-  border-radius: 4vw 0 4vw 0;
-  color: white;
-  font-size: 1.6rem;
-  padding: 18px;
-  text-align: center;
-}
-.tri-text h1 {
-  font-size: 2.6rem;
-  letter-spacing: 0.4rem;
-  font-weight: 100;
-}
-.tri-text p {
-  font-weight: 100;
-  font-size: 1.1rem;
-}
 .ts {
   background-size: cover;
   min-height: 40vh;
@@ -625,10 +439,12 @@ export default {
 }
 .tri-sm-4 > p {
   position: relative;
-  margin-top: 17vh;
+  margin-top: 11vh;
+  font-size: 2rem;
 }
 .said {
-  margin-top: -10px;
+  margin-top: 20px;
+  line-height: normal;
 }
 .carousel {
   min-height: 50vh;
@@ -725,6 +541,17 @@ export default {
   .five-cont {
     top: 20px;
   }
+  .gallery > .gallery__list {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .two-image-holder-holder,
+  .two-text-holder-holder {
+    padding: 12px;
+  }
+  .two-image-holder,
+  .two-text-holder {
+    padding: 12px;
+  }
 }
 @media (min-width: 660px) and (max-width: 1023px) {
   .box-logo {
@@ -754,10 +581,12 @@ export default {
   position: relative;
   opacity: 0;
   animation: seedback 3s ease-in 1s 1 forwards;
+  font-size: smaller;
 }
 #change {
   opacity: 0;
   animation: changein 3s ease-in 1s 1 forwards;
+  font-size: smaller;
 }
 @keyframes seedback {
   0% {
