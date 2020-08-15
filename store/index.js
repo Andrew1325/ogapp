@@ -11,6 +11,7 @@ export const strict = false
 
 export const state = () => ({
   reload: false,
+  greetDone: false,
   visits: [],
   devices: [],
   regs: [],
@@ -36,6 +37,9 @@ export const getters = {
   },
   user: state => {
     return state.user
+  },
+  greetDone: state => {
+    return state.greetDone
   }
 }
 
@@ -54,6 +58,9 @@ export const mutations = {
   },
   setRegs(state, data) {
     state.regs = data
+  },
+  SET_GREETDONE(state, bool) {
+    state.greetDone = bool
   },
   SET_USER(state, usr) {
     if (usr === null) {
@@ -78,7 +85,9 @@ export const actions = {
     await dispatch('getUser')
     await dispatch('event/getEvents')
   },
-
+  greeted(vuexContext) {
+    vuexContext.commit('SET_GREETDONE', true)
+  },
   async getUser(vuexContext) {
     const tokenCookie = await this.$cookiez.get('apollo-token')
 

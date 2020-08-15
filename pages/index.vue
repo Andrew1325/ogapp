@@ -1,5 +1,12 @@
 <template>
-  <v-layout row wrap justify-center align-center>
+  <v-layout
+    class="fade-in"
+    row
+    wrap
+    justify-center
+    align-center
+    v-if="loaded || greetDone"
+  >
     <v-flex xs12>
       <v-card flat class="all one">
         <div class="box-logo"></div>
@@ -10,7 +17,7 @@
             {{ user.name.split(" ")[0] }}
           </h1>
         </div>
-        <div class="teaser" style="line-height: 2.2rem;" v-else>
+        <div class="teaser" style="line-height: 2.5rem;" v-else>
           <h1>
             <span id="seed"
               >Transformational <br />
@@ -23,106 +30,62 @@
             Claim your sovereignty and find personal empowerment through the
             deep connection and community of true sisterhood
           </p>
+          <div class="hero-btns">
+            <v-btn nuxt to="/events" color="white" class="retreat-btn" outline
+              >Retreats</v-btn
+            ><v-btn nuxt to="/events" color="white" class="retreat-btn" outline
+              >Programs</v-btn
+            ><v-btn nuxt to="/events" color="white" class="retreat-btn" outline
+              >Courses</v-btn
+            >
+          </div>
         </div>
       </v-card>
     </v-flex>
     <div class="gallery">
       <div class="gallery__list">
-        <div class="two-image-holder-holder">
-          <div class="two-image-holder">
-            <img src="/mandalaGrey.svg" width="100%" />
-            <h1></h1>
-            <br />
-            <p style="text-align:center;">
-              <br />
-              <br />
-              <i
-                >“Every woman who heals herself helps heal all the women who
-                came before her, and all those who come after her.”</i
-              >
-              <br />
-              <small>Christine Northrup</small>
-            </p>
-            <v-divider color="white"></v-divider>
-            <br />
-            <br />
-            <p style="text-align:center; font-weight:400; font-size:1.4rem;">
-              <v-btn
-                nuxt
-                to="/events"
-                class="retreat-btn"
-                color="rgb(244, 24, 244)"
-                outline
-                >Retreats</v-btn
-              >
-              <br />
-              <br />
-              <v-btn
-                nuxt
-                to="/events"
-                class="retreat-btn"
-                color="rgb(214, 24, 214)"
-                outline
-                >Programs</v-btn
-              >
-              <br />
-              <br />
-              <v-btn
-                nuxt
-                to="/events"
-                class="retreat-btn"
-                color="rgb(184, 24, 184)"
-                outline
-                >Courses</v-btn
-              >
-            </p>
-            <br />
-            <br />
-          </div>
+        <div class="two-holder two-first">
+          <div class="two-img-holder"><img src="/citrus.jpg" alt="" /></div>
+          <br /><br />
+          <p>
+            Do you feel as though you give so much of your time and energy to
+            others that you have none left for yourself?
+          </p>
+          <p>
+            Do you have a deep longing for true sisterhood and nourishing
+            connection with like-minded women?
+          </p>
         </div>
-        <div class="two-text-holder-holder">
-          <div class="two-text-holder">
-            <br />
-            <br />
-            <br />
-
-            <p>
-              Do you feel as though you give so much of your time and energy to
-              others that you have none left for yourself?
-            </p>
-            <p>
-              Do you have a deep longing for true sisterhood and nourishing
-              connection with like-minded women?
-            </p>
-            <p>
-              Do you want to spend time in a space where nobody needs anything
-              from you; to reconnect with yourself, replenish your soul, and
-              return to your life feeling lighter, stronger, and sovereign?
-            </p>
-            <p>
-              Are you ready to go on a journey of shared + personal discovery
-              and transformation?
-            </p>
-            <p>
-              Would it feel good to be truly seen + heard without judgement,
-              supported unconditionally, and loved for exactly who you are?
-            </p>
-            <p>
-              If you answered yes to ANY of these questions, then an Ordinary
-              Goddess Retreat is for YOU.
-            </p>
-            <br /><br />
-            <p style="text-align:center; font-weight:400; font-size:1.4rem;">
-              <v-btn
-                nuxt
-                to="/events"
-                class="retreat-btn"
-                color="rgb(5, 200, 200)"
-                outline
-                >I want to know more</v-btn
-              >
-            </p>
-          </div>
+        <div class="two-holder two-second">
+          <div class="two-img-holder"><img src="/lensball.jpg" alt="" /></div>
+          <br /><br />
+          <p>
+            Do you want to spend time in a space where nobody needs anything
+            from you; to reconnect with yourself, replenish your soul, and
+            return to your life feeling lighter, stronger, and sovereign?
+          </p>
+          <p>
+            Are you ready to go on a journey of shared + personal discovery and
+            transformation?
+          </p>
+        </div>
+        <div class="two-holder two-third">
+          <div class="two-img-holder"><img src="/daylight.jpg" alt="" /></div>
+          <br /><br />
+          <p>
+            Would it feel good to be truly seen + heard without judgement,
+            supported unconditionally, and loved for exactly who you are?
+          </p>
+          <p>
+            If you answered yes to ANY of these questions, then an Ordinary
+            Goddess Retreat is for YOU.
+          </p>
+          <br /><br />
+          <p style="text-align:center; font-weight:400; font-size:1.4rem;">
+            <v-btn nuxt to="/events" class="retreat-btn" outline
+              >I want to know more</v-btn
+            >
+          </p>
         </div>
       </div>
     </div>
@@ -132,110 +95,94 @@
         <div class="para-div" style="height: 100vh"></div>
         <div class="teaser">
           <h1>
-            Shopping
-            <br class="hidden-sm-and-up" />Goddess
+            Goddess
+            <br class="hidden-sm-and-up" />Goods
           </h1>
           <p style="font-weight:400; padding:0 100px;">
-            Check out our shop for all your goddess needs.
             <br />
             <br />Coming Soon...
           </p>
-          <v-btn nuxt to="/shop" outline color="white">More...</v-btn>
+          <v-btn nuxt to="/shop" outline color="white">Shop now</v-btn>
         </div>
       </v-card>
     </v-flex>
 
-    <v-flex xs12 class="for">
-      <v-layout row wrap style="padding:14vh 0;">
-        <v-flex xs12 md4>
-          <div class="ts tri-sm-1">
-            <h1>Do You</h1>
-          </div>
-        </v-flex>
-        <v-flex xs12 md4>
-          <div class="ts tri-sm-2">
-            <h1>Want</h1>
-          </div>
-        </v-flex>
-        <v-flex xs12 md4>
-          <div class="ts tri-sm-3">
-            <h1>More?</h1>
-          </div>
-        </v-flex>
-        <v-flex xs10 offset-xs1>
-          <div class="ts tri-sm-4">
-            <p style="text-align:center;">
-              <i
-                >“An empowered woman tends her inner fire, lights up those
-                around her and sparks divine transformation within and
-                without.”</i
-              >
-              <br />
-              <br />
-              <small>Shikoba</small>
-            </p>
-          </div>
-        </v-flex>
-      </v-layout>
-    </v-flex>
+    <div
+      class="gallery"
+      style="background-color: rgb(12,12,12); color: white; margin-top: 0;"
+    >
+      <h1
+        style="margin-top: 4rem; letter-spacing: .3rem; font-size: 3rem; font-weight: 100;"
+      >
+        What women are saying...
+      </h1>
+      <div class="gallery__list">
+        <div class="two-holder two-first">
+          <img src="/goddessDeviceDevGrey.svg" alt="" />
+          <br /><br />
+          <p style="color: white;">
+            <img src="/quotes.svg" height="34px" alt="" />
+            <i> {{ quotes[0] }}</i>
+          </p>
+        </div>
+        <div class="two-holder two-second">
+          <img src="/mandalaGrey.svg" alt="" />
+          <br /><br />
+          <p style="color: white;">
+            <i> {{ quotes[1] }}</i>
+          </p>
+        </div>
+        <div class="two-holder two-third">
+          <img src="/featherGrey.svg" alt="" />
+          <br /><br />
+          <p style="color: white;">
+            <i> {{ quotes[3] }}</i
+            ><img class="quote-rotate" src="/quotes.svg" height="34px" alt="" />
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <v-flex xs12>
-      <v-card flat class="carousel">
-        <v-carousel interval="7500" hide-controls hide-delimiters>
-          <h1 class="said">What women love about Ordinary Goddess Retreats</h1>
-          <br />
-          <v-carousel-item v-for="(q, i) in quotes" :key="i" src>
-            <div>
-              <span>
-                <h1 style="font-size:1.2rem;">"{{ q }}"</h1>
-              </span>
-            </div>
-          </v-carousel-item>
-        </v-carousel>
-      </v-card>
-    </v-flex>
     <v-flex xs12>
       <v-card flat class="all five">
         <div class="para-div2" style="height: 120vh"></div>
-        <div class="five-cont">
-          <v-layout row wrap>
-            <v-flex xs12 md6>
-              <div class="five-text-holder">
-                <h1>Goddess Words</h1>
-                <p style="font-weight:400; font-size:1.3rem;">
-                  <i
-                    >“When women get together, they tell stories. That is how it
-                    has always been. Telling stories is our way of saying where
-                    we have come from, what we know, and where we might be
-                    headed.</i
-                  >
-                  <br />
-                  <br />
-                  <small>Jalaja Bonheim</small>
-                  <br />
-                  <br />
-                  <v-btn nuxt to="/blog" outline color="white"
-                    >Read our blog</v-btn
-                  >
-                </p>
-              </div>
-            </v-flex>
-            <v-flex xs12 md6>
-              <div class="five-image-holder hidden-sm-and-down">
-                <img src="/girl-candle.jpg" width="100%" />
-              </div>
-            </v-flex>
-          </v-layout>
+        <div class="teaser">
+          <h1>
+            Goddess
+            <br class="hidden-sm-and-up" />Blog
+          </h1>
+          <p class="blog-quote">
+            <i
+              >“When women get together, they tell stories. That is how it has
+              always been. Telling stories is our way of saying where we have
+              come from, what we know, and where we might be headed.</i
+            >
+            <br />
+            <br />
+            <small>Jalaja Bonheim</small>
+            <br />
+            <br />
+          </p>
+
+          <v-btn nuxt to="/blog" outline color="white">Read now</v-btn>
         </div>
       </v-card>
     </v-flex>
     <main-footer />
   </v-layout>
+  <div class="loading-page" v-else>
+    <div class="black">
+      <img class="fade-in" src="/goddessDeviceDev.svg" alt="goddess logo" />
+    </div>
+    <div class="white">
+      <img src="/goddessDeviceDevBlk.svg" alt="goddess logo" />
+    </div>
+  </div>
 </template>
 
 <script>
 import MainFooter from "@/components/MainFooter";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data: () => ({
@@ -246,8 +193,17 @@ export default {
       "Was awesome – thank you. Being financially stretched usually means I can’t attend events like this. So glad it was by donation. Next time hopefully I'll be able to donate more! Blessings and light to the goddesses.",
       "The atmosphere and connecting with other women in love and friendship that wish to improve themselves and the world.",
       "The relaxed energy and time, location. Loved drumming, my first time. Food was great. Friendship & sisterhood was fantastic."
-    ]
+    ],
+    loaded: false
   }),
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.loaded = true;
+        this.greeted();
+      }, 3500);
+    });
+  },
   components: {
     MainFooter
   },
@@ -260,7 +216,8 @@ export default {
   computed: {
     ...mapGetters({
       user: "user",
-      events: "event/events"
+      events: "event/events",
+      greetDone: "greetDone"
     }),
     openEvent() {
       let op = [];
@@ -280,12 +237,68 @@ export default {
       setTimeout(function() {
         self.greet = false;
       }, 1500);
-    }
+    },
+    ...mapActions(["greeted"])
   }
 };
 </script>
 
 <style scoped>
+.black {
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.black > img,
+.white > img {
+  height: 70vh;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.white > img {
+  opacity: 1;
+  animation: whatout 0.9s ease-in 4.1s 1 forwards;
+}
+.white {
+  overflow: hidden;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+  height: 100vh;
+  width: 0px;
+  left: 50vw;
+  animation: whitein 1.5s ease-in 2s 1 forwards;
+}
+@keyframes whatout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes whitein {
+  0% {
+    width: 0vw;
+    left: 50vw;
+  }
+  60% {
+    width: 80vw;
+    left: 10vw;
+  }
+  100% {
+    width: 100vw;
+    left: 0vw;
+  }
+}
+.fade-in {
+  opacity: 0;
+  animation: whatin 0.9s ease-in 0.4s 1 forwards;
+}
 .greeting {
   opacity: 0;
   animation: greetin 1.5s ease-in 0s 1 forwards;
@@ -317,8 +330,22 @@ export default {
   left: 46%;
   top: 30px;
 }
+.hero-btns {
+  width: 600px;
+  position: relative;
+  left: 50%;
+  top: 70px;
+  transform: translate(-50%, -50%);
+  margin: 0.1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 0.1rem;
+  grid-auto-flow: dense;
+}
 .gallery {
   position: relative;
+  margin-top: 11vh;
   z-index: 0;
 }
 .gallery > .gallery__list {
@@ -329,54 +356,77 @@ export default {
   grid-gap: 0.1rem;
   grid-auto-flow: dense;
 }
-
-.two-image-holder-holder {
+.two-holder {
   position: relative;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  background-color: rgb(247, 247, 247);
-  border: 4px solid white;
-  padding: 30px;
-}
-.two-text-holder-holder {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  background-color: rgb(254, 254, 254);
-  border: 4px solid white;
-  padding: 30px;
-}
-.two-image-holder {
-  position: relative;
-  padding: 100px 20px !important;
   margin: 0 auto;
-  border: 1px solid rgb(244, 24, 244);
-  border-radius: 0 6vw 0 6vw;
-}
-.two-image-holder > img {
-  margin: 0 28%;
-  width: 44%;
-}
-.two-image-holder,
-.two-sm-image-holder h1 {
-  font-weight: 100;
-}
-.two-image-holder,
-.two-sm-image-holder img {
-  padding: 34px;
-  opacity: 0.8;
-}
-.two-text-holder {
-  min-height: 100%;
-  padding: 84px 36px;
-  position: relative;
-  margin: 0px auto;
-  background: rgb(254, 254, 254);
-  border: 1px solid rgb(25, 250, 250);
-  border-radius: 6vw 0 6vw 0;
   color: rgb(22, 22, 22);
+}
+.two-first > .two-img-holder {
+  border: 4px solid grey;
+  position: relative;
+  left: -10%;
+  transform: translate(-6%, -6%);
+}
+.two-second > .two-img-holder {
+  border: 4px solid grey;
+  position: relative;
+  height: 30vh;
+  width: fit-content;
+  transform: translate(6%, 6%);
+}
+.two-third > .two-img-holder {
+  border: 4px solid grey;
+  position: relative;
+  transform: translate(18%, 0%);
+}
+.two-holder p {
+  font-family: sans-serif !important;
+  font-weight: 300 !important;
+  line-height: 1.8rem !important;
+}
+.two-first > p,
+.two-second > p,
+.two-third > p {
+  padding: 24px 20%;
+}
+.two-first > .two-img-holder > img {
+  height: 35vh;
+  transform: translate(-6%, -6%);
+}
+.two-second > .two-img-holder > img {
+  height: 100%;
+  transform: translate(-6%, -6%);
+}
+.two-third > .two-img-holder > img {
+  height: 35vh;
+  transform: translate(6%, -6%);
+}
+.two-second {
+  position: relative;
+  top: 27%;
+}
+
+.two-third {
+  position: relative;
+  top: 0%;
+  margin-bottom: 26%;
+}
+.two-first > img,
+.two-second > img {
+  height: 124px;
+  position: relative;
+  left: 50%;
+}
+.two-third > img {
+  height: 164px;
+  position: relative;
+  left: 50%;
+  margin-top: 68%;
+}
+.quote-rotate {
+  transform: rotate(180deg);
+  position: absolute;
+  margin: 8px 16px;
 }
 .retreat-btn {
   min-width: 186px;
@@ -504,17 +554,38 @@ export default {
   border-radius: 6vw 0 6vw 0;
   color: white;
 }
+.blog-quote {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
 @media (max-width: 660px) {
   .box-logo {
     width: 28vw;
     min-height: 22vh;
     left: 36vw;
   }
+  .hero-btns {
+    width: 360px;
+    position: relative;
+    left: 50%;
+    top: 70px;
+    transform: translate(-41%, -50%);
+    margin: 0.1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 0.8fr));
+    grid-template-rows: auto;
+    grid-gap: 0.1rem;
+    grid-auto-flow: dense;
+  }
   .teaser p,
   .five-text-holder p,
   .tri-sm-4 p {
     font-weight: 400;
     font-size: 1.1rem;
+  }
+  .blog-quote {
+    padding: 8px 76px;
+    font-size: 1.2rem;
   }
   .teaser h1,
   .five-text-holder h1,
@@ -559,22 +630,13 @@ export default {
     left: 43%;
   }
   .teaser p {
-    font-weight: 100;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .teaser h1,
   .two-text-holder h1 {
     font-size: 2.9rem;
     letter-spacing: 0.3rem;
     font-weight: 100;
-  }
-}
-@media (min-width: 1024px) {
-  .two-image-holder {
-    width: 80%;
-  }
-  .two-text-holder {
-    width: 80%;
   }
 }
 #seed {
@@ -587,6 +649,104 @@ export default {
   opacity: 0;
   animation: changein 3s ease-in 1s 1 forwards;
   font-size: smaller;
+}
+
+@media (min-width: 300px) and (max-width: 1000px) {
+  .two-first,
+  .two-second,
+  .two-third {
+    position: relative;
+    top: 0%;
+    margin-top: 46px;
+  }
+  .two-first > .two-img-holder {
+    left: -10%;
+    width: fit-content;
+  }
+  .two-first > p,
+  .two-second > p,
+  .two-third > p {
+    padding: 12px 10%;
+  }
+  .two-second > .two-img-holder {
+    position: relative;
+    left: 78vw;
+    transform: translate(-55%, 0%);
+    width: fit-content;
+    height: 35vh;
+  }
+  .two-second > .two-img-holder > img {
+    transform: translate(6%, -6%);
+  }
+  .two-third > .two-img-holder {
+    position: relative;
+    left: -10%;
+    width: fit-content;
+    height: 35vh;
+    transform: translate(0%, 0%);
+  }
+  .two-third > .two-img-holder > img {
+    transform: translate(-6%, -12%);
+  }
+}
+@media (min-width: 1001px) and (max-width: 1505px) {
+  .gallery > .gallery__list {
+    margin-bottom: 26%;
+  }
+  .two-first > .two-img-holder {
+    border: 4px solid grey;
+    position: relative;
+    left: -10%;
+    width: fit-content;
+  }
+  .two-second > .two-img-holder {
+    border: 4px solid grey;
+    position: relative;
+    height: 35vh;
+    width: fit-content;
+    left: 20%;
+  }
+  .two-third > .two-img-holder {
+    border: 4px solid grey;
+    position: relative;
+    left: -20%;
+    width: fit-content;
+  }
+  .two-holder p {
+    font-family: sans-serif !important;
+    font-weight: 300 !important;
+  }
+  .two-first > p,
+  .two-second > p,
+  .two-third > p {
+    padding: 18px 10%;
+  }
+  .two-first > .two-img-holder > img {
+    height: 40vh;
+    transform: translate(-6%, -6%);
+  }
+  .two-second > .two-img-holder > img {
+    height: 100%;
+    transform: translate(6%, -6%);
+  }
+  .two-third > .two-img-holder > img {
+    height: 40vh;
+    transform: translate(-6%, -6%);
+  }
+  .two-second {
+    position: relative;
+    top: 40%;
+  }
+
+  .two-third {
+    position: relative;
+    top: 34%;
+  }
+}
+@media (max-width: 1505px) {
+  .two-third > img {
+    margin-top: 0%;
+  }
 }
 @keyframes seedback {
   0% {

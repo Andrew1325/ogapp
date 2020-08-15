@@ -13,7 +13,6 @@ export default {
     nstripeSecret: process.env.STRIPE_SECRET
   },
   mode: 'universal',
-
   /*
    ** Headers of the page
    */
