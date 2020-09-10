@@ -1,75 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <div class="menu-btn">
-        <nuxt-link style="color:#c1c1c1; text-decoration:none; cursor:pointer" to="/">
-          <p class="menu-button">ORDINARY GODDESSES</p>
-        </nuxt-link>
-        <div class="menu-holder" @click="drawer = !drawer"></div>
-        <p class="menu-button" style="cursor:pointer" @click="drawer = !drawer">MENU</p>
-      </div>
-      <v-navigation-drawer
-        v-model="drawer"
-        :mini-variant="mini"
-        style="background-color: rgba(44, 40, 42, 0.962);"
-        class="darken-3"
-        fixed
-        dark
-        temporary
-        width="320"
-      >
-        <div class="block"></div>
-        <v-list class="pt-0 menu-list" dense>
-          <v-divider light></v-divider>
-
-          <v-list-tile v-for="item in items" :key="item.title" style="padding: 20px 0">
-            <v-list-tile-action>
-              <v-icon class="material-icons-outlined">{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-
-            <v-list-tile-content>
-              <nuxt-link style="color:white; text-decoration: none;" :to="item.link">
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </nuxt-link>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-
-        <v-list class="pt-0 menu-list" dense>
-          <v-divider light></v-divider>
-          <template v-for="(item, i) in items2">
-            <v-list-tile
-              v-if="i === 0 && !user || i === 1 && !!user && user.permissions > 1 || i === 2 && !!user || i === 3 && !!user"
-              :key="item.title"
-              style="padding: 20px 0"
-              nuxt
-              :to="item.link"
-            >
-              <v-list-tile-action>
-                <v-icon class="material-icons-outlined">{{ item.icon }}</v-icon>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
-        </v-list>
-        <!-- <v-divider></v-divider> -->
-
-        <v-list class="pa-1 menu-list">
-          <v-list-tile v-if="mini" @click.stop="mini = !mini">
-            <v-list-tile-action>
-              <v-icon>chevron_right</v-icon>
-            </v-list-tile-action>
-          </v-list-tile>
-          <v-list-tile avatar tag="div">
-            <v-btn class="fr" icon @click.stop="mini = !mini">
-              <v-icon>chevron_left</v-icon>
-            </v-btn>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
+      <Nav :user="user" />
       <v-container fluid style="padding:0px;">
         <nuxt />
       </v-container>
@@ -78,9 +10,13 @@
 </template>
 
 <script>
+import Nav from "../components/Nav.vue";
 import { mapGetters } from "vuex";
 
 export default {
+  components: {
+    Nav
+  },
   data() {
     return {
       drawer: null,

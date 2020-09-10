@@ -1,14 +1,15 @@
 <template>
-  <v-layout
-    class="fade-in"
-    row
-    wrap
-    justify-center
-    align-center
-    v-if="loaded || greetDone"
-  >
+  <v-layout class="fade-in" row wrap justify-center align-center v-if="loaded || greetDone">
     <v-flex xs12>
       <v-card flat class="all one">
+        <!-- <div class="one__logo">
+          <div class="one__logo-top" id="goddess">
+            <img src="/goddessDeviceTop.svg" id="goddess-top" alt />
+          </div>
+          <div class="one__logo-bottom" id="goddess-words">
+            <img src="/goddessDeviceBottom.svg" id="goddess-bottom" alt />
+          </div>
+        </div>-->
         <div class="box-logo"></div>
         <div class="teaser greeting" v-if="greet">
           <h1>
@@ -19,10 +20,10 @@
         </div>
         <div class="teaser" style="line-height: 2.5rem;" v-else>
           <h1>
-            <span id="seed"
-              >Transformational <br />
-              Retreats</span
-            >
+            <span id="seed">
+              Transformational
+              <br />Retreats
+            </span>
             <span id="change">For Women</span>
           </h1>
           <br />
@@ -31,66 +32,17 @@
             deep connection and community of true sisterhood
           </p>
           <div class="hero-btns">
-            <v-btn nuxt to="/events" color="white" class="retreat-btn" outline
-              >Retreats</v-btn
-            ><v-btn nuxt to="/events" color="white" class="retreat-btn" outline
-              >Programs</v-btn
-            ><v-btn nuxt to="/events" color="white" class="retreat-btn" outline
-              >Courses</v-btn
-            >
+            <v-btn nuxt to="/events" color="white" class="retreat-btn" outline>Retreats</v-btn>
+            <v-btn nuxt to="/events" color="white" class="retreat-btn" outline>Programs</v-btn>
+            <v-btn nuxt to="/events" color="white" class="retreat-btn" outline>Courses</v-btn>
           </div>
         </div>
       </v-card>
     </v-flex>
-    <div class="gallery">
-      <div class="gallery__list">
-        <div class="two-holder two-first">
-          <div class="two-img-holder"><img src="/citrus.jpg" alt="" /></div>
-          <br /><br />
-          <p>
-            Do you feel as though you give so much of your time and energy to
-            others that you have none left for yourself?
-          </p>
-          <p>
-            Do you have a deep longing for true sisterhood and nourishing
-            connection with like-minded women?
-          </p>
-        </div>
-        <div class="two-holder two-second">
-          <div class="two-img-holder"><img src="/lensball.jpg" alt="" /></div>
-          <br /><br />
-          <p>
-            Do you want to spend time in a space where nobody needs anything
-            from you; to reconnect with yourself, replenish your soul, and
-            return to your life feeling lighter, stronger, and sovereign?
-          </p>
-          <p>
-            Are you ready to go on a journey of shared + personal discovery and
-            transformation?
-          </p>
-        </div>
-        <div class="two-holder two-third">
-          <div class="two-img-holder"><img src="/daylight.jpg" alt="" /></div>
-          <br /><br />
-          <p>
-            Would it feel good to be truly seen + heard without judgement,
-            supported unconditionally, and loved for exactly who you are?
-          </p>
-          <p>
-            If you answered yes to ANY of these questions, then an Ordinary
-            Goddess Retreat is for YOU.
-          </p>
-          <br /><br />
-          <p style="text-align:center; font-weight:400; font-size:1.4rem;">
-            <v-btn nuxt to="/events" class="retreat-btn" outline
-              >I want to know more</v-btn
-            >
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <v-flex xs12>
+    <FirstFold />
+
+    <v-flex id="shop" xs12>
       <v-card flat class="all three">
         <div class="para-div" style="height: 100vh"></div>
         <div class="teaser">
@@ -107,41 +59,7 @@
       </v-card>
     </v-flex>
 
-    <div
-      class="gallery"
-      style="background-color: rgb(12,12,12); color: white; margin-top: 0;"
-    >
-      <h1
-        style="margin-top: 4rem; letter-spacing: .3rem; font-size: 3rem; font-weight: 100;"
-      >
-        What women are saying...
-      </h1>
-      <div class="gallery__list">
-        <div class="two-holder two-first">
-          <img src="/goddessDeviceDevGrey.svg" alt="" />
-          <br /><br />
-          <p style="color: white;">
-            <img src="/quotes.svg" height="34px" alt="" />
-            <i> {{ quotes[0] }}</i>
-          </p>
-        </div>
-        <div class="two-holder two-second">
-          <img src="/mandalaGrey.svg" alt="" />
-          <br /><br />
-          <p style="color: white;">
-            <i> {{ quotes[1] }}</i>
-          </p>
-        </div>
-        <div class="two-holder two-third">
-          <img src="/featherGrey.svg" alt="" />
-          <br /><br />
-          <p style="color: white;">
-            <i> {{ quotes[3] }}</i
-            ><img class="quote-rotate" src="/quotes.svg" height="34px" alt="" />
-          </p>
-        </div>
-      </div>
-    </div>
+    <FirstFold :quotes="quotes" />
 
     <v-flex xs12>
       <v-card flat class="all five">
@@ -152,11 +70,11 @@
             <br class="hidden-sm-and-up" />Blog
           </h1>
           <p class="blog-quote">
-            <i
-              >“When women get together, they tell stories. That is how it has
+            <i>
+              “When women get together, they tell stories. That is how it has
               always been. Telling stories is our way of saying where we have
-              come from, what we know, and where we might be headed.</i
-            >
+              come from, what we know, and where we might be headed.
+            </i>
             <br />
             <br />
             <small>Jalaja Bonheim</small>
@@ -182,6 +100,7 @@
 
 <script>
 import MainFooter from "@/components/MainFooter";
+import FirstFold from "@/components/FirstFold";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -194,7 +113,12 @@ export default {
       "The atmosphere and connecting with other women in love and friendship that wish to improve themselves and the world.",
       "The relaxed energy and time, location. Loved drumming, my first time. Food was great. Friendship & sisterhood was fantastic."
     ],
-    loaded: false
+    loaded: false,
+    last: 20000,
+    lastBottom: 20000,
+    lastGoddess: 20000,
+    sheet: null,
+    sheet2: null
   }),
   mounted() {
     this.$nextTick(() => {
@@ -202,10 +126,47 @@ export default {
         this.loaded = true;
         this.greeted();
       }, 3500);
+      setTimeout(() => {
+        let elem1 = document.getElementById("capture");
+        let elem2 = document.getElementById("shop");
+        // let elem3 = document.getElementById("goddess");
+        this.sheet = document.styleSheets[46]; //cssRules[14] & cssRules[15]
+        this.sheet2 = document.styleSheets[93];
+        console.log(document.styleSheets);
+
+        function buildThresholdList() {
+          let thresholds = [];
+          let numSteps = 40;
+
+          for (let i = 1.0; i <= numSteps; i++) {
+            let ratio = i / numSteps;
+            thresholds.push(ratio);
+          }
+
+          thresholds.push(0);
+          return thresholds;
+        }
+
+        //############# start nav intersection observer
+
+        const io_options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: buildThresholdList()
+        };
+        let io_observer;
+
+        io_observer = new IntersectionObserver(this.io_callback, io_options);
+        io_observer.observe(elem1);
+        io_observer.observe(elem2);
+        // io_observer.observe(elem3);
+        //############# end
+      }, 6000);
     });
   },
   components: {
-    MainFooter
+    MainFooter,
+    FirstFold
   },
   beforeRouteEnter(to, from, next) {
     if (from.path === "/signin") {
@@ -238,7 +199,121 @@ export default {
         self.greet = false;
       }, 1500);
     },
-    ...mapActions(["greeted"])
+    ...mapActions(["greeted"]),
+
+    io_callback(entries) {
+      let bef = this.sheet.cssRules[14].style;
+      let af = this.sheet.cssRules[15].style;
+      // let words = this.sheet2.cssRules[15].style;
+      entries.forEach(entry => {
+        if (entry.target.id === "capture") {
+          if (entry.isIntersecting) {
+            let st = entry.boundingClientRect.top;
+            let sb = entry.boundingClientRect.bottom;
+
+            if (st < this.last) {
+              // console.log("down", st);
+              if (this.last - st > 120) {
+                // console.log("fast");
+                if (st <= 200 && st >= -40) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(0,0,0)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(0,0,0)");
+                }
+              } else {
+                // console.log("slow");
+                if (st <= 110 && st >= 60) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(0,0,0)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(0,0,0)");
+                }
+              }
+              this.last = st;
+            } else {
+              // console.log("up");
+              if (st - this.last > 120) {
+                // console.log("fast");
+                if (st <= 200 && st >= -40) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(255, 255, 255)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(255, 255, 255)");
+                }
+              } else {
+                // console.log("slow");
+                if (st <= 110 && st >= 60) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(255, 255, 255)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(255, 255, 255)");
+                }
+              }
+              this.last = st;
+            }
+          }
+        }
+        if (entry.target.id === "shop") {
+          if (entry.isIntersecting) {
+            let st = entry.boundingClientRect.top;
+            let sb = entry.boundingClientRect.bottom;
+
+            if (sb < this.lastBottom) {
+              // console.log("down shop", sb);
+              if (this.lastBottom - sb < -40) {
+                // console.log("fast shop", sb - this.lastBottom);
+                if (sb <= 200 && sb >= 0) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(255,255,255)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(255,255,255)");
+                }
+              } else {
+                // console.log("slow shop", sb - this.lastBottom);
+                if (sb <= 110 && sb >= 60) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(255,255,255)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(255,255,255)");
+                }
+              }
+              this.lastBottom = sb;
+            } else {
+              // console.log("up shop");
+              if (sb - this.lastBottom > 80) {
+                // console.log("fast shop", sb - this.lastBottom);
+                if (sb <= 200 && sb >= 0) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(0,0,0)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(0,0,0)");
+                }
+              } else {
+                // console.log("slow shop", sb - this.lastBottom);
+                if (sb <= 110 && sb >= 60) {
+                  bef.removeProperty("background-color");
+                  bef.setProperty("background-color", "rgb(0,0,0)");
+                  af.removeProperty("background-color");
+                  af.setProperty("background-color", "rgb(0,0,0)");
+                }
+              }
+              this.lastBottom = sb;
+            }
+          }
+        }
+        if (entry.target.id === "goddess") {
+          if (entry.isIntersecting) {
+            let st = entry.boundingClientRect.top;
+            let sb = entry.boundingClientRect.bottom;
+            if (sb < this.lastBottom) {
+              if (sb <= 100 && sb >= 70) {
+              }
+            }
+          }
+        }
+      });
+    }
   }
 };
 </script>
@@ -320,6 +395,17 @@ export default {
   background-size: cover;
   position: relative;
   border: 4px solid white;
+}
+.one__logo {
+  position: relative;
+  top: 2.5rem;
+  left: 2.5rem;
+}
+.one__logo img {
+  width: 6.5rem;
+}
+.one__logo-bottom {
+  position: relative;
 }
 .box-logo {
   width: 8%;
@@ -423,11 +509,7 @@ export default {
   left: 50%;
   margin-top: 68%;
 }
-.quote-rotate {
-  transform: rotate(180deg);
-  position: absolute;
-  margin: 8px 16px;
-}
+
 .retreat-btn {
   min-width: 186px;
 }
