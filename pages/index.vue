@@ -130,8 +130,10 @@ export default {
         let elem1 = document.getElementById("capture");
         let elem2 = document.getElementById("shop");
         // let elem3 = document.getElementById("goddess");
-        this.sheet = document.styleSheets[46]; //cssRules[14] & cssRules[15]
-        this.sheet2 = document.styleSheets[93];
+        // this.sheet = document.styleSheets[46]; // - dev cssRules[14] & cssRules[15]
+        // this.sheet2 = document.styleSheets[93]; // -dev
+        this.sheet = document.styleSheets[2]; // - prod cssRules[14] & cssRules[15]
+        // this.sheet2 = document.styleSheets[93]; // -prod
         console.log(document.styleSheets);
 
         function buildThresholdList() {
@@ -202,8 +204,10 @@ export default {
     ...mapActions(["greeted"]),
 
     io_callback(entries) {
-      let bef = this.sheet.cssRules[14].style;
-      let af = this.sheet.cssRules[15].style;
+      let bef = this.sheet.cssRules[3807].style; // -prod
+      let af = this.sheet.cssRules[3808].style; // -prod
+      // let bef = this.sheet.cssRules[14].style; // -dev
+      // let af = this.sheet.cssRules[15].style; //-dev
       // let words = this.sheet2.cssRules[15].style;
       entries.forEach(entry => {
         if (entry.target.id === "capture") {
